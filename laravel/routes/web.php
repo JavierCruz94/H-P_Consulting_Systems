@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+        Route::get('ID/{id}',function($id){
+   echo 'ID: '.$id;
+});
+
+Route::get('/home', function() {
+   return view( 'home');
+});
