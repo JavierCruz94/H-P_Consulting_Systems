@@ -16,7 +16,7 @@
                 <div class="thumbnail" style="border:none; background:white;">
 
                     <div class="col-sm-6 col-md-6 col-xs-12 image-container">
-                        <img width="300" alt="File Icons" style="margin: auto" class="pure-img-responsive" src="{{URL::asset('play1.png')}}"/>
+                        <img width="300" alt="File Icons" style="margin: auto" class="pure-img-responsive" src="{{URL::asset('HYPCS.png')}}"/>
                     </div>
 
                     <div class="col-sm-6 col-md-6 col-xs-12">

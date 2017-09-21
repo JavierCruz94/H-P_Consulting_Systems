@@ -28,17 +28,10 @@ Route::get('/', function()
 {
     return view ('pages.homepage');
 });
-Route::get('/buttonTest', function()
-{
-    return view('welcome');
-});
+
 Route::get('/consultantReq', function()
 {
     return view('pages.consultantReq');
-});
-Route::get('/clientReq', function()
-{
-    return view('pages.clientReq');
 });
 
 // Administrator Pages
@@ -57,4 +50,21 @@ Route::get('/adminAddClient', function()
 Route::get('/adminAddConsultant', function()
 {
     return view('pages.admin.addConsultant');
+});
+
+//Client pages
+Route::get('/clientReq', function()
+{
+    return view('pages.client.clientReq');
+});
+Route::get('/clientAssign', function()
+{
+    return view('pages.client.assignReq');
+});
+
+
+//Consultant pages
+Route::get('/consultantReq', function()
+{
+    return view('pages.consultant.consultantReq');
 });
