@@ -36,15 +36,25 @@ Route::get('/consultantReq', function()
 {
     return view('pages.consultantReq');
 });
-Route::get('/adminWatch', function()
-{
-    return view('pages.adminWatch');
-});
 Route::get('/clientReq', function()
 {
     return view('pages.clientReq');
 });
+
+// Administrator Pages
+Route::get('/adminWatch', function()
+{
+    return view('pages.admin.watch');
+});
 Route::get('/adminAssignReq', function()
 {
-    return view('pages.adminAssignReq');
+    return view('pages.admin.assignReq');
+});
+Route::get('/adminAddClient', function()
+{
+    return view('pages.admin.addClient');
+});
+Route::get('/adminAddConsultant', function()
+{
+    return view('pages.admin.addConsultant');
 });
