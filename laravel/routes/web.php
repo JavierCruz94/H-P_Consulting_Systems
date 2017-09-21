@@ -28,15 +28,23 @@ Route::get('/', function()
 {
     return view ('pages.homepage');
 });
-Route::get('/about', function()
+Route::get('/buttonTest', function()
 {
-    return View::make('pages.about');
+    return view('welcome');
 });
-Route::get('projects', function()
+Route::get('/consultantReq', function()
 {
-    return View::make('pages.projects');
+    return view('pages.consultantReq');
 });
-Route::get('contact', function()
+Route::get('/adminWatch', function()
 {
-    return View::make('pages.contact');
+    return view('pages.adminWatch');
+});
+Route::get('/clientReq', function()
+{
+    return view('pages.clientReq');
+});
+Route::get('/adminAssignReq', function()
+{
+    return view('pages.adminAssignReq');
 });
