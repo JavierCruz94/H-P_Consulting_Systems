@@ -25,7 +25,7 @@
             </span>
             <p style="float:right"> Es una empresa, ante el SAT, registrada en el régimen de “Persona Física con Actividad Empresarial”.
             </p>
-            -->
+     -->
         <p style="font-size:17px; color:#03225C; text-align:justify;">
             Es una empresa, ante el SAT, registrada en el régimen de “Persona Física con Actividad Empresarial”.
         </p>
