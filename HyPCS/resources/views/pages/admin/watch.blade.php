@@ -9,6 +9,7 @@
 
 @section('content')
     <br> <br> <br>
+    <h3><span class="label label-default" id="firstAdd">Clientes</span></h3>
     <div class="table-responsive">
         <table class="table">
             <tr style="font-weight: bold; margin: auto">
