@@ -14,7 +14,7 @@
             <h3><span class="label label-default" id="firstAdd">Registrar Visita</span></h3>
             <h5 class="adminMarginAdd">Cliente: </h5>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Nombre del Cliente" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                <input type="text" class="form-control" placeholder="Codigo del Cliente" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
             </div>
             <button type="button" class="btn btn-default" style="margin-top: 1em">Buscar solicitudes</button></td>
             <div>
@@ -24,11 +24,11 @@
                 </div>
                 <h5 class="adminMarginAdd">Hora llegada:</h5>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="HH:MM" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input type="time"  value="12:00">
                 </div>
                 <h5 class="adminMarginAdd">Hora salida:</h5>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="HH:MM" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input type="time"  value="12:00">
                 </div>
                 <button type="button" class="btn btn-default" style="margin-top: 1em">Generar reporte</button></td>
             </div>
