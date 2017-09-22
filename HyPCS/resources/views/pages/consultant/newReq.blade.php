@@ -50,7 +50,7 @@
                 <td>PPPP</td>
                 <td>PPPP</td>
                 <td>PPPP</td>
-                <td><button type="button" class="btn btn-default">Agendar Visita</button></td>
+                <td><a href="/schedReq">Agendar Visita</a></td>
             </tr>
         </table>
     </div>

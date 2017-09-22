@@ -76,3 +76,7 @@ Route::get('/calendarCons', function()
 {
     return view ('pages.consultant.calendar');
 });
+Route::get('/schedReq', function()
+{
+    return view ('pages.consultant.schedReq');
+});
