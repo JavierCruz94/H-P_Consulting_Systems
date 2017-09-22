@@ -9,5 +9,5 @@
 
 @section('content')
     <br> <br> <br>
-    <img width="900" alt="File Icons" style="margin: auto" class="pure-img-responsive" src="{{URL::asset('calendar.png')}}"/>
+    <iframe src="https://calendar.google.com/calendar/embed?src=eli.emmanuel01%40gmail.com&ctz=America/Mexico_City" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 @endsection
