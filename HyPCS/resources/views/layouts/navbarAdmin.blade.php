@@ -1,8 +1,10 @@
 @extends('layouts.navbar')
 
-@section('navbarType')
+@section('navTitle')
     <a class="navbar-brand" href="#">Administrador</a>
-    <!-- <form class="navbar-form navbar-left" role="search"> -->
+@endsection
+
+@section('navbarType')
     <ul class="nav navbar-nav navbar-right">
         <li ><a href="/adminWatch">Ver clientes</a></li>
         <li ><a href="/adminAddClient">Nuevo Cliente</a></li>

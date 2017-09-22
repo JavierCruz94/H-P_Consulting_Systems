@@ -31,9 +31,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li>Cons. 1</li>
-                            <li>Cons. 2</li>
-                            <li>Cons. x</li>
+                            <li><a href="#">Cons. 1</a></li>
+                            <li><a href="#">Cons. 2</a></li>
+                            <li><a href="#">Cons. x</a></li>
                         </ul>
                     </div>
                 </td>
@@ -51,9 +51,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li>Cons. 1</li>
-                            <li>Cons. 2</li>
-                            <li>Cons. x</li>
+                            <li><a href="#">Cons. 1</a></li>
+                            <li><a href="#">Cons. 2</a></li>
+                            <li><a href="#">Cons. x</a></li>
                         </ul>
                     </div>
                 </td>
@@ -71,9 +71,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li>Cons. 1</li>
-                            <li>Cons. 2</li>
-                            <li>Cons. x</li>
+                            <li><a href="#">Cons. 1</a></li>
+                            <li><a href="#">Cons. 2</a></li>
+                            <li><a href="#">Cons. x</a></li>
                         </ul>
                     </div>
                 </td>
@@ -91,9 +91,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li>Cons. 1</li>
-                            <li>Cons. 2</li>
-                            <li>Cons. x</li>
+                            <li><a href="#">Cons. 1</a></li>
+                            <li><a href="#">Cons. 2</a></li>
+                            <li><a href="#">Cons. x</a></li>
                         </ul>
                     </div>
                 </td>

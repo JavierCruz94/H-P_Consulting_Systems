@@ -1,18 +1,15 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
+            @yield('navTitle')
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-
+        <div class="collapse navbar-collapse" id="myNavbar">
             @yield('navbarType')
-
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>

@@ -1,8 +1,10 @@
 @extends('layouts.navbar')
 
-@section('navbarType')
+@section('navTitle')
     <a class="navbar-brand" href="#">Consultor</a>
-    <!-- <form class="navbar-form navbar-left" role="search"> -->
+@endsection
+
+@section('navbarType')
     <ul class="nav navbar-nav navbar-right">
         <li ><a href="/clientReq">Nuevas Solicitudes</a></li>
         <li><a href="/">Agendar Cita</a></li>
