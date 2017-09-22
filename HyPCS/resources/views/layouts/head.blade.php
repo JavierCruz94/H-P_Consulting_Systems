@@ -5,5 +5,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/app.js"> </script>
 <script type="text/javascript" src="js/page.js"> </script>
-@yield('custom_css')
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+@yield('custom_head')
