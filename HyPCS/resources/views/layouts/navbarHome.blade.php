@@ -10,7 +10,7 @@
         <li> <p class="navbar-text">Contraseña:</p></li>
         <li> <input type="text" class="form-control" placeholder="contraseña" style="margin-top: .60em"></li>
         <li><a href="/adminWatch">Adm</a></li>
-        <li><a href="/consultantReq">Cons</a></li>
+        <li><a href="/newReq">Cons</a></li>
         <li><a href="/clientReq">Cliente</a></li>
         <!--
         <li> <button href="/buttonTest" type="button" class="btn btn-default navbar-btn" style="margin-left: 1em; margin-top: .60em" >Admn</button> </li>

@@ -9,5 +9,5 @@
 
 @section('content')
     <br> <br> <br>
-    Consultant Page
+    <img width="900" alt="File Icons" style="margin: auto" class="pure-img-responsive" src="{{URL::asset('calendar.png')}}"/>
 @endsection

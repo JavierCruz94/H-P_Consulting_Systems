@@ -57,14 +57,22 @@ Route::get('/clientReq', function()
 {
     return view('pages.client.clientReq');
 });
-Route::get('/clientAssign', function()
+Route::get('/calendarClient', function()
 {
-    return view('pages.client.assignReq');
+    return view('pages.client.calendar');
 });
 
 
 //Consultant pages
-Route::get('/consultantReq', function()
+Route::get('/newReq', function()
 {
-    return view('pages.consultant.consultantReq');
+    return view ('pages.consultant.newReq');
+});
+Route::get('/regVisit', function()
+{
+    return view ('pages.consultant.regVisit');
+});
+Route::get('/calendarCons', function()
+{
+    return view ('pages.consultant.calendar');
 });
