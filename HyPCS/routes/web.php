@@ -1,38 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-        Route::get('ID/{id}',function($id){
-   echo 'ID: '.$id;
-});
-
-Route::get('/home', function() {
-   return view( 'home');
-});
-*/
-
-Route::get('/', function()
-{
-    return view ('pages.homepage');
-});
-
-Route::get('/consultantReq', function()
-{
-    return view('pages.consultantReq');
-});
+Route::get('/', 'HomeController@index');
 
 // Administrator Pages
 Route::get('/adminWatch', function()
@@ -79,4 +47,9 @@ Route::get('/calendarCons', function()
 Route::get('/schedReq', function()
 {
     return view ('pages.consultant.schedReq');
+});
+
+Route::get('/consultantReq', function()
+{
+    return view('pages.consultantReq');
 });
