@@ -6,6 +6,7 @@
 
 @section('navbarType')
     <ul class="nav navbar-nav navbar-right">
+
         <li> <p class="navbar-text">Usuario:</p></li>
         <li> <input type="text" class="form-control" placeholder="usuario" style="margin-top: .60em"></li>
 
