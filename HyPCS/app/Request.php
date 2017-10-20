@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Request extends Model
@@ -17,7 +18,6 @@ class Request extends Model
         'subject',
         'description',
         'importance',
-        'date_created',
         'deadline',
         'solved'
     ];
