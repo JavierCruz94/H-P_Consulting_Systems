@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $information->name }}</td>
                     <td>{{ $information->code }}</td>
-                    <td>0</td>
+                    <td>{{ substr($information->created_at, 0, 10) }}</td>
                     <td>0</td>
                     <td>0</td>
                 </tr>

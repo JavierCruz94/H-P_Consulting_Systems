@@ -91,21 +91,24 @@ class DatabaseSeeder extends Seeder
             'id_admin' => 1,
             'firstname' => 'Hector',
             'lastname' => 'Cruz Admin',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('admins')->insert([
             'id_admin' => 4,
             'firstname' => 'Admin2',
             'lastname' => 'Admin2',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('admins')->insert([
             'id_admin' => 7,
             'firstname' => 'Admin3',
             'lastname' => 'Admin3',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         //Create consultants
@@ -114,7 +117,8 @@ class DatabaseSeeder extends Seeder
             'firstname' => 'Cons1',
             'lastname' => 'Cons1',
             'level' => 'master',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('consultants')->insert([
@@ -122,7 +126,8 @@ class DatabaseSeeder extends Seeder
             'firstname' => 'Cons2',
             'lastname' => 'Cons2',
             'level' => 'novice',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('consultants')->insert([
@@ -130,7 +135,8 @@ class DatabaseSeeder extends Seeder
             'firstname' => 'Cons3',
             'lastname' => 'Cons3',
             'level' => 'intermediate',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         //Create customers
@@ -138,21 +144,24 @@ class DatabaseSeeder extends Seeder
             'id_customer' => 3,
             'code' => 'CT1',
             'name' => 'Customer Test 1',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('customers')->insert([
             'id_customer' => 6,
             'code' => 'CT2',
             'name' => 'Customer Test 2',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('customers')->insert([
             'id_customer' => 9,
             'code' => 'CT3',
             'name' => 'Customer Test 3',
-            'registeredBy' => 1
+            'registeredBy' => 1,
+            'created_at' => date("Y/m/d")
         ]);
     }
 }
