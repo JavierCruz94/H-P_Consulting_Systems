@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Period;
+use App\Admin;
+use App\Consultant;
+use App\Customer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +17,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //Create users
-        DB::table('users')->insert([
+
+        User::create([
             'username' => 'admin1',
             'password' => bcrypt('root'),
-            'email' => 'admin1@gmail.com',
-            'role' => 'admin',
-            'created_at' => date("Y/m/d")
+            'email' =>'admin1@gmail.com',
+            'role' => 'admin'
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'consult1',
             'password' => bcrypt('root'),
             'email' => 'consult1@gmail.com',
@@ -30,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'client1',
             'password' => bcrypt('root'),
             'email' => 'client1@gmail.com',
@@ -38,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'admin2',
             'password' => bcrypt('root'),
             'email' => 'admin2@gmail.com',
@@ -46,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'consult2',
             'password' => bcrypt('root'),
             'email' => 'consult2@gmail.com',
@@ -54,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'client2',
             'password' => bcrypt('root'),
             'email' => 'client2@gmail.com',
@@ -62,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'admin3',
             'password' => bcrypt('root'),
             'email' => 'admin3@gmail.com',
@@ -70,7 +73,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'consult3',
             'password' => bcrypt('root'),
             'email' => 'consult3@gmail.com',
@@ -78,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => date("Y/m/d")
         ]);
 
-        DB::table('users')->insert([
+        User::create([
             'username' => 'client3',
             'password' => bcrypt('root'),
             'email' => 'client3@gmail.com',
@@ -87,7 +90,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //Create admins
-        DB::table('admins')->insert([
+        Admin::create([
             'id_admin' => 1,
             'firstname' => 'Hector',
             'lastname' => 'Cruz Admin',
