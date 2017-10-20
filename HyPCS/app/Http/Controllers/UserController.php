@@ -17,16 +17,13 @@ class UserController extends Controller
         //$user = Auth::user();
 
         if ($user->isAdmin()) {
-            //return redirect('/adminWatch');
-            echo "SOY UN ADMIN";
+            return redirect('/adminWatch');
         }
         if ($user->isConsultant()) {
-            //return redirect('/admin/home');
-            echo "SOY UN Consultant";
+            return redirect('/newReq');
         }
         if ($user->isCustomer()) {
-            //return redirect('/admin/home');
-            echo "SOY UN customer";
+            return redirect('/customerReq');
         }
     }
 }

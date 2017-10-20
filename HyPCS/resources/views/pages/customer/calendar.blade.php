@@ -4,7 +4,7 @@
 @section('title', 'HyPCS')
 
 @section('navbar')
-    @include('layouts.navbarClient')
+    @include('layouts.navbarCustomer')
 @endsection
 
 @section('content')

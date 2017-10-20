@@ -17,6 +17,6 @@ class HomeController extends Controller
 
     public function doLogin()
     {
-// process the form
+
     }
 }

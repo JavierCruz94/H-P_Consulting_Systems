@@ -1,92 +1,68 @@
 <?php
 
+// Home route
 Route::get('/', 'HomeController@index');
 
-//User redirection and validation
-Route::get('/user', 'UserController@index');
-
-/*
-Route::get('/home', function() {
-   return view( 'home');
-});*/
-
+//----------------------------------------------------------------------------------------------------------------------
 
 //Login
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
-//------------
+//----------------------------------------------------------------------------------------------------------------------
 
 //Logout
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+//----------------------------------------------------------------------------------------------------------------------
+
 //User redirection and validation
 Route::get('/user', 'UserController@index');
-//------------
 
-Route::get('/', function()
-{
-    return view ('pages.homepage');
-});
+//----------------------------------------------------------------------------------------------------------------------
 
+/* Administrator Routes */
 
-Route::get('/consultantReq', function()
-{
-    return view('pages.consultantReq');
-});
-
-
-// Administrator Pages
-Route::get('/adminWatch', 'AdminController@index');
+// Admin's home route. Route for watching customers.
+Route::get('/adminWatch', 'AdminController@watchCustomers');
 
 Route::get('/adminAssignReq', function()
 {
     return view('pages.admin.assignReq');
 });
 
-Route::get('/adminAddClient','AdminController@create');
-Route::post('/adminAddClient','AdminController@storeClient')->name('addClientDB');
+// Routes for adding a new customer
+Route::get('/adminAddCustomer','AdminController@addCustomerForm');
+Route::post('/adminAddCustomer','AdminController@addCustomer')->name('addCustomerDB');
 
-Route::get('/adminAddConsultant','AdminController@createConsultant');
-Route::post('/adminAddConsultant','AdminController@storeConsultant')->name('addConsultantDB');
+// Routes for adding a new consultant
+Route::get('/adminAddConsultant','AdminController@addConsultantForm');
+Route::post('/adminAddConsultant','AdminController@addConsultant')->name('addConsultantDB');
 
-Route::get('/adminAddConsultant', function()
-{
-    return view('pages.admin.addConsultant');
-});
+//----------------------------------------------------------------------------------------------------------------------
 
-//Client pages /////////////////
-Route::get('/clientReq', function()
-{
-    return view('pages.client.clientReq');
-});
-Route::post('/clientReq') ->name('addReqDB');
+/* Customer Routes */
 
-Route::get('/calendarClient', function()
-{
-    return view('pages.client.calendar');
-});
+// Customer's home route. Routes for creating requests
+Route::get('/customerReq', 'CustomerController@customerReqForm');
+Route::post('/customerReq','CustomerController@addReq' ) ->name('addReqDB');
+
+// Customer's calendar route for scheduled requests
+Route::get('/customerCalendar', 'CustomerController@showCalendar');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* Consultant Routes */
+
+// Consultant's home route. Route for new requests inbox.
+Route::get('/newReq', 'ConsultantController@showNewRequests');
+// Route for scheduling a new request
+Route::get('/schedReq', 'ConsultantController@scheduleRequestForm');
 
 
-//Consultant pages
-Route::get('/newReq', function()
-{
-    return view ('pages.consultant.newReq');
-});
-Route::get('/regVisit', function()
-{
-    return view ('pages.consultant.regVisit');
-});
-Route::get('/calendarCons', function()
-{
-    return view ('pages.consultant.calendar');
-});
-Route::get('/schedReq', function()
-{
-    return view ('pages.consultant.schedReq');
-});
+// Route for registering a visit
+Route::get('/regVisit', 'ConsultantController@registerVisitForm');
 
-Route::get('/consultantReq', function()
-{
-    return view('pages.consultantReq');
-});
+// Consultant's calendar route for scheduled requests
+Route::get('/calendarCons', 'ConsultantController@showCalendar');
+
