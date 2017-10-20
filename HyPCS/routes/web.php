@@ -29,6 +29,7 @@ Route::get('/adminWatch', 'AdminController@watchCustomers');
 
 // Routes for assigning requests to consultants
 Route::get('/adminAssignReq', 'AdminController@getRequestsConsultants');
+Route::post('/adminAssignReq', 'AdminController@assignRequestToConsultant')->name('assignRequestToConsultant');
 
 // Routes for adding a new customer
 Route::get('/adminAddCustomer','AdminController@addCustomerForm');
