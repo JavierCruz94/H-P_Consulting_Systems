@@ -6,7 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Request;
+use Illuminate\Http\Request;
+use App\Request as RequestModel;
 class CustomerController extends Controller
 {
     public function __construct()
@@ -42,18 +43,20 @@ class CustomerController extends Controller
 
         //$username = $id;
 
-        Request::create([
-            'id_customer' => 1,
+
+        RequestModel::create([
+            'id_customer' => 3,
             'id_admin' => 1,
-            'schedule' => null,
+            'schedule' => false,
             'subject' => $request->subject,
             'description' => $request -> description,
-            'importance' => $request -> importance,
+            'importance' => 'baja',
             'deadline' => $request ->deadline,
-            'solved' => null
+            'solved' => false
         ]);
 
-        echo exito;
+        return view('pages.client.clientReq');
+
     }
 
     public function startReq()

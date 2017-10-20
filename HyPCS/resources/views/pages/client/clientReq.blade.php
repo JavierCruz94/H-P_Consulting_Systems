@@ -14,15 +14,16 @@
         <h3><span class="label label-default" id="firstAdd">Nueva Solicitud</span></h3>
         <h5 class="adminMarginAdd">Asunto: </h5>
         <div class="input-group" style=" margin-left: 620px;">
-            <input type="text" class="form-control" placeholder="Asunto" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+            <input name = "subject" type="text" class="form-control" placeholder="Asunto" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+
         </div>
         <h5 class="adminMarginAdd">Descripcion: </h5>
         <div class="input-group" style=" margin-left: 620px;">
-            <textarea class="form-control" placeholder="Comentarios" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em; height: 150px; width: 250px"> </textarea>
+            <textarea name = "description" class="form-control" placeholder="Comentarios" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em; height: 150px; width: 250px"> </textarea>
         </div>
         <h5 class="adminMarginAdd">Fecha límite: </h5>
         <div class="input-group" style=" margin-left: 635px;">
-            <input id="entryDate" type="date" name="entryDate" value="2017-07-05">    </div>
+            <input name = "deadline" id="entryDate" type="date" name="entryDate" value="2017-07-05">    </div>
         <br>
         <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
