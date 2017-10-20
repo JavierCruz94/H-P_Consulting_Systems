@@ -56,7 +56,7 @@ class CustomerController extends Controller
             'schedule' => false,
             'subject' => $request->subject,
             'description' => $request -> description,
-            'importance' => 'baja',
+            'importance' => $request->importancia,
             'deadline' => $request ->deadline,
             'solved' => false
 

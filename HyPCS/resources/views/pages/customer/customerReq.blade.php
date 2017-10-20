@@ -24,7 +24,15 @@
         <h5 class="adminMarginAdd">Fecha límite: </h5>
         <div class="input-group" style=" margin-left: 635px;">
             <input name = "deadline" id="entryDate" type="date" name="entryDate" value="2017-07-05">    </div>
-        <br>
+
+        <div >
+            <select class="form-control" id="importance" name="importancia">
+                <option value="Baja">Baja</option>
+                <option value="Media">Media</option>
+                <option value="Alta">Alta</option>
+            </select>
+        </div>
+        <!--
         <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Importancia
@@ -36,6 +44,7 @@
                 <li><a href="#">Baja</a></li>
             </ul>
         </div>
+        -->
         <button type="submit" class="btn btn-default" style="margin-top: 1em">Solicitar</button></td>
     </form>
 @endsection
