@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -15,7 +13,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-    //    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -23,20 +21,11 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function watchCustomers()
     {
-        //$userAuth = auth()->user();
-        //$userAuth = Auth::user();
-        //$admin = $userAuth->userInfo;
+        $customers = DB::table('customers')->get();
 
-        //return view('pages.admin.watch')->with(['user' => $userAuth, 'admin' => $admin]);
-        /*
-        $userAuth = auth()->user();
-        $admin = $userAuth->userInfo;
-        */
-        $users = DB::table('customers')->get();
-
-        return view('pages.admin.watch') ->with(['users' => $users]);//->with(['user' => $userAuth, 'admin' => $admin]);
+        return view('pages.admin.watch') ->with(['customers' => $customers]);
     }
 
     /**
@@ -44,12 +33,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function addCustomerForm()
     {
-        return view('pages.admin.addClient');
+        return view('pages.admin.addCustomer');
     }
 
-    public function storeClient(Request $request)
+    public function addCustomer(Request $request)
     {
         //$userAdmin= Auth::user();
 
@@ -83,11 +72,11 @@ class AdminController extends Controller
         return redirect('/adminAddClient')->with('success','Cliente agregado!');
     }
 
-    public function createConsultant() {
+    public function addConsultantForm() {
         return view('pages.admin.addConsultant');
     }
 
-    public function storeConsultant(Request $request) {
+    public function addConsultant(Request $request) {
         User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),

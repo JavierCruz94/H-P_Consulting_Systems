@@ -16,15 +16,5 @@
                 <button type="submit" class="btn btn-default">Login</button>
             </form>
         </li>
-        <li><a href="/adminWatch">Adm</a></li>
-        <li><a href="/newReq">Cons</a></li>
-        <li><a href="/clientReq">Cliente</a></li>
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-default" style="margin-top: .60em">Logout</button>
-            </form>
-        </li>
-
     </ul>
 @endsection

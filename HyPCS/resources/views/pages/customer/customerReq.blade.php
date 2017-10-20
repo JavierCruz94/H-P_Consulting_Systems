@@ -4,7 +4,7 @@
 @section('title', 'HyPCS')
 
 @section('navbar')
-    @include('layouts.navbarClient')
+    @include('layouts.navbarCustomer')
 @endsection
 <form action="{{ route('addReqDB') }}" method="POST">
     {{ csrf_field() }}

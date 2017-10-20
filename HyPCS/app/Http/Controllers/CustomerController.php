@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        //    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -19,15 +19,9 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function customerReqForm()
     {
-        /*
-        $userAuth = auth()->user();
-        $admin = $userAuth->userInfo;
-        */
-        $users = DB::table('customers')->get();
-
-        return view('pages.admin.watch') ->with(['users' => $users]);//->with(['user' => $userAuth, 'admin' => $admin]);
+        return view('pages.customer.customerReq');
     }
 
     /**
@@ -35,12 +29,12 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showCalendar()
     {
-        return view('pages.client.clientReq');
+        return view('pages.customer.calendar');
     }
 
-    public function storeClient(Request $request)
+    public function addReq(Request $request)
     {
         //$userAdmin= Auth::user();
 
@@ -52,7 +46,7 @@ class CustomerController extends Controller
         //$id = $initials . $year . random_int(0, 30);
 
         //$username = $id;
-
+        /*
         $user = User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),
@@ -75,7 +69,7 @@ class CustomerController extends Controller
         ]);
 
         DB::table('customers')->insert($customer);
-
-        echo exito;
+        */
+        echo 'Se crea una nueva requisicion';
     }
 }

@@ -20,11 +20,11 @@
                 <td> Ultima Req. </td>
             </tr>
 
-            @foreach($users as $information)
+            @foreach($customers as $customer)
                 <tr>
-                    <td>{{ $information->name }}</td>
-                    <td>{{ $information->code }}</td>
-                    <td>{{ substr($information->created_at, 0, 10) }}</td>
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->code }}</td>
+                    <td>{{ substr($customer->created_at, 0, 10) }}</td>
                     <td>0</td>
                     <td>0</td>
                 </tr>

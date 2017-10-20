@@ -11,7 +11,7 @@
     <br> <br> <br>
     <div>
         <div>
-            <form action="{{ route('addClientDB') }}" method="POST">
+            <form action="{{ route('addCustomerDB') }}" method="POST">
                 {{ csrf_field() }}
                 <div style = "padding-left: 300px; padding-top: 100px" class="pull-left">
                     <h3><span class="label label-default" id="firstAdd">Nuevo Cliente</span></h3>
