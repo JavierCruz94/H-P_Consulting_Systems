@@ -2,19 +2,28 @@
 
 Route::get('/', 'HomeController@index');
 
+//User redirection and validation
+Route::get('/user', 'UserController@index');
+
+//Login
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+
 // Administrator Pages
-Route::get('/adminWatch', function()
-{
-    return view('pages.admin.watch');
-});
+Route::get('/adminWatch', 'AdminController@index');
+
 Route::get('/adminAssignReq', function()
 {
     return view('pages.admin.assignReq');
 });
+
+Route::get('/adminAddClient','AdminController@create');
+Route::post('/adminAddClient','AdminController@storeClient')->name('addClientDB');
+/*
 Route::get('/adminAddClient', function()
 {
     return view('pages.admin.addClient');
 });
+*/
 Route::get('/adminAddConsultant', function()
 {
     return view('pages.admin.addConsultant');

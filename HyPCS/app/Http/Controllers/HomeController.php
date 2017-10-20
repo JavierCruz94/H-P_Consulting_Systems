@@ -14,4 +14,9 @@ class HomeController extends Controller
     public function index(Request $request) {
         return view('pages.homepage');
     }
+
+    public function doLogin()
+    {
+// process the form
+    }
 }
