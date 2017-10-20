@@ -6,7 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use App\Request;
 class CustomerController extends Controller
 {
     public function __construct()
@@ -19,17 +19,6 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        /*
-        $userAuth = auth()->user();
-        $admin = $userAuth->userInfo;
-        */
-        $users = DB::table('customers')->get();
-
-        return view('pages.admin.watch') ->with(['users' => $users]);//->with(['user' => $userAuth, 'admin' => $admin]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +29,7 @@ class CustomerController extends Controller
         return view('pages.client.clientReq');
     }
 
-    public function storeClient(Request $request)
+    public function storeReq(Request $request)
     {
         //$userAdmin= Auth::user();
 
@@ -53,29 +42,24 @@ class CustomerController extends Controller
 
         //$username = $id;
 
-        $user = User::create([
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-            'role' => 'customer',
-            'created_at' => date("Y/m/d")
+        Request::create([
+            'id_customer' => 1,
+            'id_admin' => 1,
+            'schedule' => null,
+            'subject' => $request->subject,
+            'description' => $request -> description,
+            'importance' => $request -> importance,
+            'deadline' => $request ->deadline,
+            'solved' => null
         ]);
-
-        //insertar user a BD
-        DB::table('users')->insert($user);
-
-        //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id_user');
-
-        $customer = Customer::create([
-            'id_customer' => $userID,
-            'code' => $request->code,
-            'name'=> $request->nombre,
-            'registeredBy' => ''
-        ]);
-
-        DB::table('customers')->insert($customer);
 
         echo exito;
     }
+
+    public function startReq()
+    {
+        return view('pages.client.clientReq');
+    }
+
+
 }

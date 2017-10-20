@@ -56,12 +56,16 @@ Route::get('/adminAddConsultant', function()
 });
 
 //Client pages /////////////////
-Route::get('/clientReq', function()
+
+Route::get('/clientReq','CustomerController@startReq');
+Route::post('/clientReq','CustomerController@storeReq')->name('addReqDB');
+
+/*Route::get('/clientReq', function()
 {
     return view('pages.client.clientReq');
 });
 Route::post('/clientReq') ->name('addReqDB');
-
+*/
 Route::get('/calendarClient', function()
 {
     return view('pages.client.calendar');
