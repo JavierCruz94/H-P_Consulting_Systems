@@ -12,7 +12,7 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        //    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -20,17 +20,23 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function customerReqForm()
+    {
+        return view('pages.customer.customerReq');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showCalendar()
     {
-        return view('pages.client.clientReq');
+        return view('pages.customer.calendar');
     }
 
-    public function storeReq(Request $request)
+
+    public function addReq(Request $request)
     {
         //$userAdmin= Auth::user();
 
@@ -53,6 +59,7 @@ class CustomerController extends Controller
             'importance' => 'baja',
             'deadline' => $request ->deadline,
             'solved' => false
+
         ]);
 
         return view('pages.client.clientReq');
@@ -63,6 +70,4 @@ class CustomerController extends Controller
     {
         return view('pages.client.clientReq');
     }
-
-
 }

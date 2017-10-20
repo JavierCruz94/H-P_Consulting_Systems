@@ -21,6 +21,22 @@
                 <td> Consultor </td>
                 <td> Asignar </td>
             </tr>
+            @foreach($requests as $request)
+                <tr>
+                    <form action="{{ route('assignConsultant') }}" method="POST">
+                        <td>{{ $request->name }}</td>
+                        <td>{{ $request->code }}</td>
+                        <td>{{ substr($request->created_at, 0, 10) }}</td>
+                        <td>{{ $request->subject }}</td>
+                        <td>{{ $request->description }}</td>
+                        <td> {{
+                        Form::select('consultant', $consultants)
+                        }}</td>
+                        <td><button type="submit" class="btn btn-default">Asignar</button></td>
+                    </form>
+                </tr>
+        @endforeach
+            <!--
             <tr>
                 <td>AAAAA</td>
                 <td>AAAAAA</td>
@@ -105,6 +121,7 @@
                 </td>
                 <td><button type="button" class="btn btn-default">Asignar</button></td>
             </tr>
+            -->
         </table>
     </div>
 @endsection
