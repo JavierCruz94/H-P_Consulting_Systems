@@ -23,19 +23,25 @@
             </tr>
             @foreach($requests as $request)
                 <tr>
-                    <form action="{{ route('assignConsultant') }}" method="POST">
+                    <form action="{{ route('assignRequestToConsultant') }}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_request" value="{{$request->id_request}}" />
                         <td>{{ $request->name }}</td>
                         <td>{{ $request->code }}</td>
                         <td>{{ substr($request->created_at, 0, 10) }}</td>
                         <td>{{ $request->subject }}</td>
                         <td>{{ $request->description }}</td>
-                        <td> {{
-                        Form::select('consultant', $consultants)
-                        }}</td>
+                        <td>
+                            <select class="form-control" id="selectConsId" name="selectCons">
+                                @foreach($consultants as $consultant)
+                                    <option value="{{$consultant->id_consultant}}">{{$consultant->firstname}} ({{$consultant->cantidad}})</option>
+                                @endforeach
+                            </select>
+                        </td>
                         <td><button type="submit" class="btn btn-default">Asignar</button></td>
                     </form>
                 </tr>
-        @endforeach
+            @endforeach
             <!--
             <tr>
                 <td>AAAAA</td>
