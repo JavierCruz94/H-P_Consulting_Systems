@@ -18,12 +18,10 @@ Route::get('/adminAssignReq', function()
 
 Route::get('/adminAddClient','AdminController@create');
 Route::post('/adminAddClient','AdminController@storeClient')->name('addClientDB');
-/*
-Route::get('/adminAddClient', function()
-{
-    return view('pages.admin.addClient');
-});
-*/
+
+Route::get('/adminAddConsultant','AdminController@createConsultant');
+Route::post('/adminAddConsultant','AdminController@storeConsultant')->name('addConsultantDB');
+
 Route::get('/adminAddConsultant', function()
 {
     return view('pages.admin.addConsultant');

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Customer;
+use App\Consultant;
 
 class AdminController extends Controller
 {
@@ -59,35 +60,49 @@ class AdminController extends Controller
         //$username = $id;
 
 
-        $user = User::create([
+        User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),
             'email' => $request->email,
             'role' => 'customer'
         ]);
 
-        /*
-        //insertar user a BD
-        DB::table('users')->insert([
-                'username' => $request->username,
-                'password' => bcrypt($request->password),
-                'email' => $request->email,
-                'role' => 'customer'
-        ]);
-        */
-
         //encontrar su ID
         $userID = DB::table('users')->where('username', $request->username)->value('id_user');
 
-        $customer = Customer::create([
+        Customer::create([
             'id_customer' => $userID,
             'code' => $request->code,
             'name'=> $request->nombre,
             'registeredBy' => 1
         ]);
-        /*
-        DB::table('customers')->insert($customer);
-*/
-            echo 'exito';
+
+        return redirect('/adminAddClient')->with('success','Cliente agregado!');
+    }
+
+    public function createConsultant() {
+        return view('pages.admin.addConsultant');
+    }
+
+    public function storeConsultant(Request $request) {
+        User::create([
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'email' => $request->email,
+            'role' => 'consultant'
+        ]);
+
+        //encontrar su ID
+        $userID = DB::table('users')->where('username', $request->username)->value('id_user');
+
+        Consultant::create([
+            'id_consultant' => $userID,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'level' => $request->nivel,
+            'registeredBy' => 1
+        ]);
+
+        return redirect('/adminAddConsultant')->with('success','Consultor agregado!');
     }
 }

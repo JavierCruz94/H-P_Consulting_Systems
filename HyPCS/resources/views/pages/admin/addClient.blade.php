@@ -11,9 +11,9 @@
     <br> <br> <br>
     <div>
         <div>
-            <div style = "padding-left: 300px; padding-top: 100px" class="pull-left">
-                <form action="{{ route('addClientDB') }}" method="POST">
-                    {{ csrf_field() }}
+            <form action="{{ route('addClientDB') }}" method="POST">
+                {{ csrf_field() }}
+                <div style = "padding-left: 300px; padding-top: 100px" class="pull-left">
                     <h3><span class="label label-default" id="firstAdd">Nuevo Cliente</span></h3>
                     <h5 class="adminMarginAdd">Nombre: </h5>
                     <div class="input-group">
@@ -40,7 +40,7 @@
                     </div>
                     <button type="submit" class="btn btn-default" style="margin-top: 1em">Agregar</button></td>
                 </div>
-            </form>
+             </form>
         </div>
     </div>
 @endsection
