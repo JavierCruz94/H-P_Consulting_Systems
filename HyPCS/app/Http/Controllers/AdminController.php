@@ -101,10 +101,24 @@ class AdminController extends Controller
     public function getRequestsConsultants() {
         $requests = DB::table('requests')
             ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->where('schedule', '=', '0')
             ->get();
-        $consultants = DB::table('consultants')->pluck('firstname');
+        $consultants = DB::table('consultants')
+            ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('count(requests.id_consultant) as cantidad'))
+            ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant')
+            ->groupby('consultants.id_consultant')
+            ->get();
 
-        return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests]);//->with(['user' => $userAuth, 'admin' => $admin]);
+        return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests]);
+    }
 
+    public function assignRequestToConsultant(Request $request) {
+
+        DB::table('requests')
+            ->where('id_request', $request->id_request)
+            ->update(['id_consultant' => $request->selectCons, 'schedule' => 1]);
+
+
+        return redirect('/adminAssignReq')->with('success','Consultor asignado!');
     }
 }
