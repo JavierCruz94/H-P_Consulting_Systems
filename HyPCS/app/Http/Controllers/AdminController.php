@@ -69,7 +69,7 @@ class AdminController extends Controller
             'registeredBy' => 1
         ]);
 
-        return redirect('/adminAddClient')->with('success','Cliente agregado!');
+        return redirect('/adminAddCustomer')->with('success','Cliente agregado!');
     }
 
     public function addConsultantForm() {
