@@ -6,7 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Illuminate\Http\Request;
+use App\Request as RequestModel;
 class CustomerController extends Controller
 {
     public function __construct()
@@ -34,6 +35,7 @@ class CustomerController extends Controller
         return view('pages.customer.calendar');
     }
 
+
     public function addReq(Request $request)
     {
         //$userAdmin= Auth::user();
@@ -46,30 +48,21 @@ class CustomerController extends Controller
         //$id = $initials . $year . random_int(0, 30);
 
         //$username = $id;
-        /*
-        $user = User::create([
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-            'role' => 'customer',
-            'created_at' => date("Y/m/d")
+
+
+        RequestModel::create([
+            'id_customer' => 3,
+            'id_admin' => 1,
+            'schedule' => false,
+            'subject' => $request->subject,
+            'description' => $request -> description,
+            'importance' => $request->importancia,
+            'deadline' => $request ->deadline,
+            'solved' => false
+
         ]);
 
-        //insertar user a BD
-        DB::table('users')->insert($user);
+        return view('pages.customer.customerReq');
 
-        //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id_user');
-
-        $customer = Customer::create([
-            'id_customer' => $userID,
-            'code' => $request->code,
-            'name'=> $request->nombre,
-            'registeredBy' => ''
-        ]);
-
-        DB::table('customers')->insert($customer);
-        */
-        echo 'Se crea una nueva requisicion';
     }
 }

@@ -19,6 +19,7 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 //User redirection and validation
 Route::get('/user', 'UserController@index');
 
+
 //----------------------------------------------------------------------------------------------------------------------
 
 /* Administrator Routes */
@@ -65,4 +66,3 @@ Route::get('/regVisit', 'ConsultantController@registerVisitForm');
 
 // Consultant's calendar route for scheduled requests
 Route::get('/calendarCons', 'ConsultantController@showCalendar');
-
