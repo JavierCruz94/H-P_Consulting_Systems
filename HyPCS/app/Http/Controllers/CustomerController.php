@@ -38,17 +38,6 @@ class CustomerController extends Controller
 
     public function addReq(Request $request)
     {
-        //$userAdmin= Auth::user();
-
-        //$initials = $request->partnerName[0].$request->partnerName[1].$request->partnerName[2];
-        //$initials = strtoupper($initials);
-
-        // $year = date('Y');
-
-        //$id = $initials . $year . random_int(0, 30);
-
-        //$username = $id;
-
 
         RequestModel::create([
             'id_customer' => 3,
@@ -62,7 +51,6 @@ class CustomerController extends Controller
 
         ]);
 
-        return view('pages.customer.customerReq');
-
+        return redirect('/customerReq')->with('success','Solicitud agregada!');
     }
 }

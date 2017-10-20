@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('guest');
+        //$this->middleware('auth');
     }
 
     public function index(Request $request) {
-        return view('pages.homepage');
+        if(Auth::check())
+            return redirect('/user');
+        else
+            return view('pages.homepage');
     }
 
     public function doLogin()

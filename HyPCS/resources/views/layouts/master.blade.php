@@ -18,6 +18,7 @@
                 {{ session('fail') }}
             </div>
         @endif
+
         @yield('content')
 
         @include('layouts.footer')
