@@ -62,12 +62,7 @@ class CustomerController extends Controller
 
         ]);
 
-        return view('pages.client.clientReq');
+        return view('pages.customer.customerReq');
 
-    }
-
-    public function startReq()
-    {
-        return view('pages.client.clientReq');
     }
 }
