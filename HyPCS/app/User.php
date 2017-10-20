@@ -31,8 +31,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-<<<<<<< HEAD
-=======
     public function isAdmin()
     {
         return $this->role == 'admin';
@@ -64,7 +62,4 @@ class User extends Authenticatable
 
         return false;
     }
-
-
->>>>>>> origin/Javi
 }
