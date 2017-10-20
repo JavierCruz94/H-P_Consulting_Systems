@@ -18,63 +18,72 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin1',
             'password' => bcrypt('root'),
             'email' => 'admin1@gmail.com',
-            'role' => 'admin'
+            'role' => 'admin',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'consult1',
             'password' => bcrypt('root'),
             'email' => 'consult1@gmail.com',
-            'role' => 'consultant'
+            'role' => 'consultant',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'client1',
             'password' => bcrypt('root'),
             'email' => 'client1@gmail.com',
-            'role' => 'customer'
+            'role' => 'customer',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'admin2',
             'password' => bcrypt('root'),
             'email' => 'admin2@gmail.com',
-            'role' => 'admin'
+            'role' => 'admin',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'consult2',
             'password' => bcrypt('root'),
             'email' => 'consult2@gmail.com',
-            'role' => 'consultant'
+            'role' => 'consultant',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'client2',
             'password' => bcrypt('root'),
             'email' => 'client2@gmail.com',
-            'role' => 'customer'
+            'role' => 'customer',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'admin3',
             'password' => bcrypt('root'),
             'email' => 'admin3@gmail.com',
-            'role' => 'admin'
+            'role' => 'admin',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'consult3',
             'password' => bcrypt('root'),
             'email' => 'consult3@gmail.com',
-            'role' => 'consultant'
+            'role' => 'consultant',
+            'created_at' => date("Y/m/d")
         ]);
 
         DB::table('users')->insert([
             'username' => 'client3',
             'password' => bcrypt('root'),
             'email' => 'client3@gmail.com',
-            'role' => 'customer'
+            'role' => 'customer',
+            'created_at' => date("Y/m/d")
         ]);
 
         //Create admins
