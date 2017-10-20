@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\clear as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -31,5 +31,40 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+<<<<<<< HEAD
+=======
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
 
+    public function isConsultant()
+    {
+        return $this->role == 'consultant';
+    }
+
+    public function isCustomer()
+    {
+        return $this->role == 'customer';
+    }
+
+    public function userInfo()
+    {
+        if ($this->role == 'admin') {
+            return $this->hasOne('App\Admin');
+        }
+
+        if ($this->role == 'consultant') {
+            return $this->hasOne('App\Consultant');
+        }
+
+        if ($this->role == 'customer') {
+            return $this->hasOne('App\Customer');
+        }
+
+        return false;
+    }
+
+
+>>>>>>> origin/Javi
 }
