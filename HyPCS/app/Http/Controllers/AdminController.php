@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Customer;
 use App\Consultant;
@@ -71,7 +71,7 @@ class AdminController extends Controller
         ]);
 
         //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id_user');
+        $userID = DB::table('users')->where('username', $request->username)->value('id');
 
         Customer::create([
             'id_customer' => $userID,
@@ -96,7 +96,7 @@ class AdminController extends Controller
         ]);
 
         //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id_user');
+        $userID = DB::table('users')->where('username', $request->username)->value('id');
 
         Consultant::create([
             'id_consultant' => $userID,
