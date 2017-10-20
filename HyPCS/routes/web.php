@@ -39,11 +39,6 @@ Route::get('/consultantReq', function()
 // Administrator Pages
 Route::get('/adminWatch', 'AdminController@index');
 
-Route::get('/adminAssignReq', function()
-{
-    return view('pages.admin.assignReq');
-});
-
 Route::get('/adminAddClient','AdminController@create');
 Route::post('/adminAddClient','AdminController@storeClient')->name('addClientDB');
 
@@ -54,6 +49,8 @@ Route::get('/adminAddConsultant', function()
 {
     return view('pages.admin.addConsultant');
 });
+
+Route::get('/adminAssignReq', 'AdminController@getRequestsConsultants');
 
 //Client pages /////////////////
 Route::get('/clientReq', function()

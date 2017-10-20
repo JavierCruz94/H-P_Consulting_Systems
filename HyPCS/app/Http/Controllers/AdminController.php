@@ -108,4 +108,14 @@ class AdminController extends Controller
 
         return redirect('/adminAddConsultant')->with('success','Consultor agregado!');
     }
+
+    public function getRequestsConsultants() {
+        $requests = DB::table('requests')
+            ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->get();
+        $consultants = DB::table('consultants')->pluck('firstname');
+
+        return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests]);//->with(['user' => $userAuth, 'admin' => $admin]);
+
+    }
 }
