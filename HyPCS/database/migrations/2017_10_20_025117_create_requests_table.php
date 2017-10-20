@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestTable extends Migration
+class CreateRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('request', function (Blueprint $table) {
+        Schema::create('requests', function (Blueprint $table) {
             $table->increments('id_request');
             $table->unsignedInteger('id_customer');
             $table->unsignedInteger('id_admin');
@@ -22,13 +22,12 @@ class CreateRequestTable extends Migration
             $table->string('subject');
             $table->string('description');
             $table->string('importance');
-            $table->date('date_created');
             $table->date('deadline');
             $table->boolean('solved');
             $table->timestamps();
         });
 
-        Schema::table('request', function($table) {
+        Schema::table('requests', function($table) {
             $table->foreign('id_customer')->references('id_customer')->on('customers');
             $table->foreign('id_admin')->references('id_admin')->on('admins');
             $table->foreign('id_consultant')->references('id_consultant')->on('consultants');
@@ -42,6 +41,6 @@ class CreateRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('request');
+        Schema::dropIfExists('requests');
     }
 }
