@@ -166,5 +166,45 @@ class DatabaseSeeder extends Seeder
             'registeredBy' => 1,
             'created_at' => date("Y/m/d")
         ]);
+
+        //Create Request
+        DB::table('request')->insert([
+            'id_customer' => 3,
+            'id_admin' => 1,
+            'id_consultant' => null,
+            'schedule' => false,
+            'subject' => 'Limpieza Equipo',
+            'description' => 'Esta muy sucio',
+            'importance' => 'Baja',
+            'date_created' => date("2017/01/01"),
+            'deadline' => date("2017/12/31"),
+            'solved' => false
+        ]);
+
+        DB::table('request')->insert([
+            'id_customer' => 3,
+            'id_admin' => 1,
+            'id_consultant' => null,
+            'schedule' => false,
+            'subject' => 'Impresora no Sirve',
+            'description' => 'No imprime',
+            'importance' => 'Media',
+            'date_created' => date("2017/02/01"),
+            'deadline' => date("2017/11/29"),
+            'solved' => false
+        ]);
+
+        DB::table('request')->insert([
+            'id_customer' => 9,
+            'id_admin' => 1,
+            'id_consultant' => null,
+            'schedule' => false,
+            'subject' => 'Computadora no Sirve',
+            'description' => 'No prende',
+            'importance' => 'Alta',
+            'date_created' => date("2017/03/01"),
+            'deadline' => date("2017/10/28"),
+            'solved' => false
+        ]);
     }
 }

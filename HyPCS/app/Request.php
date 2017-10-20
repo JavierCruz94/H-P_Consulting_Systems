@@ -5,15 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\clear as Authenticatable;
 
-class Request extends Authenticatable
+class Request extends Model
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'id_request',
         'id_customer',
@@ -28,12 +21,13 @@ class Request extends Authenticatable
         'solved'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $primaryKey = 'id_request';
 
+    public $incrementing = true;
 
+    protected $keyType = 'integer';
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }
