@@ -23,7 +23,7 @@ class CreateAdminsTable extends Migration
 
         Schema::table('admins', function($table) {
             $table->primary('id_admin');
-            $table->foreign('id_admin')->references('id_user')->on('users');
+            $table->foreign('id_admin')->references('id')->on('users');
             $table->foreign('registeredBy')->references('id_admin')->on('admins');
         });
     }

@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
 
         Schema::table('customers', function($table) {
             $table->primary('id_customer');
-            $table->foreign('id_customer')->references('id_user')->on('users');
+            $table->foreign('id_customer')->references('id')->on('users');
             $table->foreign('registeredBy')->references('id_admin')->on('admins');
         });
     }

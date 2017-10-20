@@ -24,10 +24,24 @@ Route::get('/home', function() {
 });
 */
 
+//Login
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+
+//------------
+
+//Logout
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+//User redirection and validation
+Route::get('/user', 'UserController@index');
+//------------
+
 Route::get('/', function()
 {
     return view ('pages.homepage');
 });
+
 
 Route::get('/consultantReq', function()
 {

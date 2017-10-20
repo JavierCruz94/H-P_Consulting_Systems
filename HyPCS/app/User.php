@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\clear as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_user',
+        'id',
         'username',
         'password',
         'email',
@@ -30,4 +30,36 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
+
+    public function isConsultant()
+    {
+        return $this->role == 'consultant';
+    }
+
+    public function isCustomer()
+    {
+        return $this->role == 'customer';
+    }
+
+    public function userInfo()
+    {
+        if ($this->role == 'admin') {
+            return $this->hasOne('App\Admin');
+        }
+
+        if ($this->role == 'consultant') {
+            return $this->hasOne('App\Consultant');
+        }
+
+        if ($this->role == 'customer') {
+            return $this->hasOne('App\Customer');
+        }
+
+        return false;
+    }
 }

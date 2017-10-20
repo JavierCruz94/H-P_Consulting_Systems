@@ -6,14 +6,27 @@
 
 @section('navbarType')
     <ul class="nav navbar-nav navbar-right">
-        <li> <p class="navbar-text">Usuario:</p></li>
-        <li> <input type="text" class="form-control" placeholder="usuario" style="margin-top: .60em"></li>
+        <li>
+            <form method="POST" action="{{ route('login') }}" class="navbar-form navbar-right">
+                {{ csrf_field() }}
+                Usuario
+                <input type="text" id="inputUsername" name="username" class="form-control" required autofocus>
+                Contraseña
+                <input type="password" id="inputPassword" name="password" class="form-control" required>
+                <button type="submit" class="btn btn-default">Login</button>
+            </form>
+        </li>
 
-        <li> <p class="navbar-text">Contraseña:</p></li>
-        <li> <input type="text" class="form-control" placeholder="contraseña" style="margin-top: .60em"></li>
 
         <li><a href="/adminWatch">Adm</a></li>
         <li><a href="/newReq">Cons</a></li>
         <li><a href="/clientReq">Cliente</a></li>
+        <li>
+            <form method="POST" action="{{ route('logout') }}">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default" style="margin-top: .60em">Logout</button>
+            </form>
+        </li>
+
     </ul>
 @endsection

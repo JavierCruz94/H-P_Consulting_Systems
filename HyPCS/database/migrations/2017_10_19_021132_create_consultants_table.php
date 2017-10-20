@@ -24,7 +24,7 @@ class CreateConsultantsTable extends Migration
 
         Schema::table('consultants', function($table) {
             $table->primary('id_consultant');
-            $table->foreign('id_consultant')->references('id_user')->on('users');
+            $table->foreign('id_consultant')->references('id')->on('users');
             $table->foreign('registeredBy')->references('id_admin')->on('admins');
         });
     }
