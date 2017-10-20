@@ -6,8 +6,17 @@
     </head>
     <body>
         @yield('navbar')
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        <div class="container">
+            @if (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
             @yield('content')
         </div>
 

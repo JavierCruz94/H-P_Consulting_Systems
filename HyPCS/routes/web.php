@@ -1,28 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-        Route::get('ID/{id}',function($id){
-   echo 'ID: '.$id;
-});
+//User redirection and validation
+Route::get('/user', 'UserController@index');
 
+/*
 Route::get('/home', function() {
    return view( 'home');
-});
-*/
+});*/
+
 
 //Login
 Route::get('/login', 'Auth\LoginController@showLoginForm');
@@ -48,29 +35,33 @@ Route::get('/consultantReq', function()
     return view('pages.consultantReq');
 });
 
+
 // Administrator Pages
-Route::get('/adminWatch', function()
-{
-    return view('pages.admin.watch');
-});
+Route::get('/adminWatch', 'AdminController@index');
+
 Route::get('/adminAssignReq', function()
 {
     return view('pages.admin.assignReq');
 });
-Route::get('/adminAddClient', function()
-{
-    return view('pages.admin.addClient');
-});
+
+Route::get('/adminAddClient','AdminController@create');
+Route::post('/adminAddClient','AdminController@storeClient')->name('addClientDB');
+
+Route::get('/adminAddConsultant','AdminController@createConsultant');
+Route::post('/adminAddConsultant','AdminController@storeConsultant')->name('addConsultantDB');
+
 Route::get('/adminAddConsultant', function()
 {
     return view('pages.admin.addConsultant');
 });
 
-//Client pages
+//Client pages /////////////////
 Route::get('/clientReq', function()
 {
     return view('pages.client.clientReq');
 });
+Route::post('/clientReq') ->name('addReqDB');
+
 Route::get('/calendarClient', function()
 {
     return view('pages.client.calendar');
@@ -93,4 +84,9 @@ Route::get('/calendarCons', function()
 Route::get('/schedReq', function()
 {
     return view ('pages.consultant.schedReq');
+});
+
+Route::get('/consultantReq', function()
+{
+    return view('pages.consultantReq');
 });

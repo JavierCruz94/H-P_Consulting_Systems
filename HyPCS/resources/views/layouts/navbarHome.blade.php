@@ -16,8 +16,6 @@
                 <button type="submit" class="btn btn-default">Login</button>
             </form>
         </li>
-
-
         <li><a href="/adminWatch">Adm</a></li>
         <li><a href="/newReq">Cons</a></li>
         <li><a href="/clientReq">Cliente</a></li>
