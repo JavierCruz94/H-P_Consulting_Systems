@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\clear as Authenticatable;
 
-class User extends Authenticatable
+class Request extends Authenticatable
 {
     use Notifiable;
 
@@ -15,11 +15,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_user',
-        'username',
-        'password',
-        'email',
-        'role'
+        'id_request',
+        'id_customer',
+        'id_admin',
+        'id_consultant',
+        'schedule',
+        'subject',
+        'description',
+        'importance',
+        'date_created',
+        'deadline',
+        'solved'
     ];
 
     /**
@@ -27,9 +33,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $primaryKey = 'id_request';
 
 
 }

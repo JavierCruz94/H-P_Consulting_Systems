@@ -52,11 +52,13 @@ Route::get('/adminAddConsultant', function()
     return view('pages.admin.addConsultant');
 });
 
-//Client pages
+//Client pages /////////////////
 Route::get('/clientReq', function()
 {
     return view('pages.client.clientReq');
 });
+Route::post('/clientReq') ->name('addReqDB');
+
 Route::get('/calendarClient', function()
 {
     return view('pages.client.calendar');
