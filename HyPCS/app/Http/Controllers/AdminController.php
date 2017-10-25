@@ -109,7 +109,13 @@ class AdminController extends Controller
             ->groupby('consultants.id_consultant')
             ->get();
 
-        return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests]);
+        $requestsAssigned = DB::table('requests')
+            ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->join('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
+            ->where('schedule', '=', '1')
+            ->get();
+        //echo json_encode($requestsAssigned);
+        return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests, 'requestsAssigned' => $requestsAssigned]);
     }
 
     public function assignRequestToConsultant(Request $request) {
@@ -120,5 +126,14 @@ class AdminController extends Controller
 
 
         return redirect('/adminAssignReq')->with('success','Consultor asignado!');
+    }
+
+    public function changeConsultant(Request $request) {
+       DB::table('requests')
+            ->where('id_request', $request->id_request)
+            ->update(['id_consultant' => null, 'schedule' => 0]);
+
+
+        return redirect('/adminAssignReq')->with('success','Vuelva a asignar el consultor');
     }
 }

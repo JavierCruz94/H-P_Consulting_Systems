@@ -17,10 +17,7 @@
                 <td> Codigo </td>
                 <td> Fecha ini </td>
                 <td> Cant. Req. </td>
-                <td> Ultima Req. </td>
-            </tr>
-
-            @foreach($customers as $customer)
+                <td> Ultima Req. @foreach($customers as $customer)
                 <tr>
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->code }}</td>
@@ -28,7 +25,10 @@
                     <td>0</td>
                     <td>0</td>
                 </tr>
-            @endforeach
+                @endforeach</td>
+            </tr>
+
+
 
         </table>
     </div>
