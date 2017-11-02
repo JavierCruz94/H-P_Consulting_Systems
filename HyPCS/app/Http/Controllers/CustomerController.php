@@ -40,7 +40,7 @@ class CustomerController extends Controller
     {
 
         RequestModel::create([
-            'id_customer' => 3,
+            'id_customer' => \Auth::user()->id,
             'id_admin' => 1,
             'schedule' => false,
             'subject' => $request->subject,

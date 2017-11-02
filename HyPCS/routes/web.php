@@ -27,10 +27,10 @@ Route::get('/user', 'UserController@index');
 // Admin's home route. Route for watching customers.
 Route::get('/adminWatch', 'AdminController@watchCustomers');
 
-// Routes for assigning requests to consultants
+// Routes for assigning and watching requests to consultants
 Route::get('/adminAssignReq', 'AdminController@getRequestsConsultants');
 Route::post('/adminAssignReq', 'AdminController@assignRequestToConsultant')->name('assignRequestToConsultant');
-//Error al tener mas de un post por pagina??
+
 Route::post('/adminChangeConsultant', 'AdminController@changeConsultant')->name('changeConsultant');
 
 // Routes for adding a new customer

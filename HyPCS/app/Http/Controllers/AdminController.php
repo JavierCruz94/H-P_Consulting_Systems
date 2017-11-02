@@ -114,7 +114,6 @@ class AdminController extends Controller
             ->join('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
             ->where('schedule', '=', '1')
             ->get();
-        //echo json_encode($requestsAssigned);
         return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests, 'requestsAssigned' => $requestsAssigned]);
     }
 

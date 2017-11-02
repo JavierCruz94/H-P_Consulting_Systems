@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConsultantController extends Controller
 {
@@ -13,7 +14,18 @@ class ConsultantController extends Controller
 
     public function showNewRequests()
     {
-        return view ('pages.consultant.newReq');
+        $id = \Auth::user()->id;
+
+
+        $requests = DB::table('requests')
+            ->leftJoin('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->leftJoin('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
+            ->where([
+                ['schedule', '=', '1'],
+                ['requests.id_consultant', '=', $id]])
+            ->get();
+
+        return view ('pages.consultant.newReq') ->with(['requests' => $requests]);
     }
 
     public function scheduleRequestForm()
