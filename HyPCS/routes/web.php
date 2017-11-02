@@ -31,7 +31,7 @@ Route::get('/adminWatch', 'AdminController@watchCustomers');
 Route::get('/adminAssignReq', 'AdminController@getRequestsConsultants');
 Route::post('/adminAssignReq', 'AdminController@assignRequestToConsultant')->name('assignRequestToConsultant');
 //Error al tener mas de un post por pagina??
-//Route::post('/adminAssignReq', 'AdminController@changeConsultant')->name('changeConsultant');
+Route::post('/adminChangeConsultant', 'AdminController@changeConsultant')->name('changeConsultant');
 
 // Routes for adding a new customer
 Route::get('/adminAddCustomer','AdminController@addCustomerForm');

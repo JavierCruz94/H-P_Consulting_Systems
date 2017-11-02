@@ -60,7 +60,7 @@
             @foreach($requestsAssigned as $requestAssign)
                 <tr>
                     <!-- Cambiar la ruta a changeConsultant -->
-                    <form action="{{ route('assignRequestToConsultant') }}" method="POST">
+                    <form action="{{ route('changeConsultant') }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="id_request" value="{{$requestAssign->id_request}}" />
                         <td>{{ $requestAssign->name }}</td>
