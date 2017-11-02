@@ -40,18 +40,6 @@ class AdminController extends Controller
 
     public function addCustomer(Request $request)
     {
-        //$userAdmin= Auth::user();
-
-        //$initials = $request->partnerName[0].$request->partnerName[1].$request->partnerName[2];
-        //$initials = strtoupper($initials);
-
-       // $year = date('Y');
-
-        //$id = $initials . $year . random_int(0, 30);
-
-        //$username = $id;
-
-
         User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),
