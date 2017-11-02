@@ -44,9 +44,11 @@ class CustomerController extends Controller
         if ($numberOfConsultants == 1) {
             $id_consultant = DB::table('consultants')
                 ->pluck('id_consultant');
+            $schedule = 1;
         }
         else {
             $id_consultant = [null];
+            $schedule = 0;
         }
 
         RequestModel::create([
@@ -54,6 +56,7 @@ class CustomerController extends Controller
             'id_admin' => 1,
             'schedule' => false,
             'id_consultant' => $id_consultant[0],
+            'schedule' => $schedule,
             'subject' => $request->subject,
             'description' => $request -> description,
             'importance' => $request->importancia,
