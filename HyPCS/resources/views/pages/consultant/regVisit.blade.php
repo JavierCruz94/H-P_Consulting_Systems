@@ -47,14 +47,10 @@
                         </tr>
                             @foreach($requests as $request)
                                 <tr>
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="id_request" value="{{$request->id_request}}" />
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox">
-                                                </label>
-                                            </div></td>
-                                        <td>{{ $request->subject }}</td>
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="id_request" value="{{$request->id_request}}" />
+                                    <td><input name="{{$request->id_customer}}" type="checkbox" value="{{$request->id_request}}"></td>
+                                    <td>{{ $request->subject }}</td>
                                 </tr>
                             @endforeach
                     </table>
