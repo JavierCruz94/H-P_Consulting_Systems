@@ -53,6 +53,14 @@ class ConsultantController extends Controller
 
     public function showCalendar()
     {
-        return view ('pages.consultant.calendar');
+        $idConsultant = \Auth::user()->id;
+
+        $appointments = DB::table('requests')
+            ->leftJoin('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->where([['id_consultant', '=', $idConsultant],
+                ['schedule', '=', '1']])
+            ->get();
+        //echo $appointments;
+        return view ('pages.consultant.calendar')->with(['appointments' => $appointments]);
     }
 }

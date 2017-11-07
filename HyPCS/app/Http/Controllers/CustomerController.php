@@ -33,7 +33,15 @@ class CustomerController extends Controller
      */
     public function showCalendar()
     {
-        return view('pages.customer.calendar');
+        $idCustomer = \Auth::user()->id;
+
+        $appointments = DB::table('requests')
+            ->leftJoin('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->where([['requests.id_customer', '=', $idCustomer],
+                ['schedule', '=', '1']])
+            ->get();
+        //echo $appointments;
+        return view ('pages.customer.calendar')->with(['appointments' => $appointments]);
     }
 
 
