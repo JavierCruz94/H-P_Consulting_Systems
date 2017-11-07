@@ -22,12 +22,16 @@
             </tr>
             @foreach($requests as $request)
                 <tr>
+                <form action="{{ route('schedReq') }}" method="GET">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id_request" value="{{$request->id_request}}" />
                     <td>{{ $request->name }}</td>
                     <td>{{ $request->code }}</td>
                     <td>{{ substr($request->created_at, 0, 10) }}</td>
                     <td>{{ $request->subject }}</td>
                     <td>{{ $request->description }}</td>
-                    <td><a href="/schedReq">Agendar Visita</a></td>
+                    <td><button type="submit" class="btn btn-default">Agendar Visita</button></td>
+                </form>
                 </tr>
             @endforeach
         </table>

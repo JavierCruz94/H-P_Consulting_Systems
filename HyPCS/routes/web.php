@@ -60,11 +60,12 @@ Route::get('/customerCalendar', 'CustomerController@showCalendar');
 // Consultant's home route. Route for new requests inbox.
 Route::get('/newReq', 'ConsultantController@showNewRequests');
 // Route for scheduling a new request
-Route::get('/schedReq', 'ConsultantController@scheduleRequestForm');
+Route::get('/schedReq', 'ConsultantController@scheduleRequestForm') ->name('schedReq');
+Route::post('/schedReq', 'ConsultantController@scheduleRequest')->name('schedInDB');
 
 
 // Route for registering a visit
 Route::get('/regVisit', 'ConsultantController@registerVisitForm');
 
 // Consultant's calendar route for scheduled requests
-Route::get('/calendarCons', 'ConsultantController@showCalendar');
+Route::get('/calendarCons', 'ConsultantController@showCalendar')->name('calendarCons');

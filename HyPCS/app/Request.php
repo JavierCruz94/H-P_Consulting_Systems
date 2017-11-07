@@ -18,7 +18,9 @@ class Request extends Model
         'description',
         'importance',
         'deadline',
-        'solved'
+        'solved',
+        'date_scheduled',
+        'time_scheduled'
     ];
 
     protected $primaryKey = 'id_request';

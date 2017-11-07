@@ -89,7 +89,7 @@ class AdminController extends Controller
     public function getRequestsConsultants() {
         $requests = DB::table('requests')
             ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
-            ->where('schedule', '=', '0')
+            ->where('id_consultant', '=', null)
             ->get();
         $consultants = DB::table('consultants')
             ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('count(requests.id_consultant) as cantidad'))
@@ -100,7 +100,7 @@ class AdminController extends Controller
         $requestsAssigned = DB::table('requests')
             ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
             ->join('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
-            ->where('schedule', '=', '1')
+            ->where('requests.id_consultant', '<>', null)
             ->get();
         return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests, 'requestsAssigned' => $requestsAssigned]);
     }
@@ -109,7 +109,7 @@ class AdminController extends Controller
 
         DB::table('requests')
             ->where('id_request', $request->id_request)
-            ->update(['id_consultant' => $request->selectCons, 'schedule' => 1]);
+            ->update(['id_consultant' => $request->selectCons]);
 
 
         return redirect('/adminAssignReq')->with('success','Consultor asignado!');
@@ -118,7 +118,7 @@ class AdminController extends Controller
     public function changeConsultant(Request $request) {
        DB::table('requests')
             ->where('id_request', $request->id_request)
-            ->update(['id_consultant' => null, 'schedule' => 0]);
+            ->update(['id_consultant' => null]);
 
 
         return redirect('/adminAssignReq')->with('success','Vuelva a asignar el consultor');

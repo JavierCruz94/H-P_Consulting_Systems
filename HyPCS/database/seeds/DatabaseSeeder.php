@@ -161,7 +161,9 @@ class DatabaseSeeder extends Seeder
             'description' => 'Esta muy sucio',
             'importance' => 'Baja',
             'deadline' => date("2017/12/31"),
-            'solved' => false
+            'solved' => false,
+            'date_scheduled' => date("2017/11/29"),
+            'time_scheduled' => date("101112")
         ]);
 
         Request::create([
@@ -173,7 +175,9 @@ class DatabaseSeeder extends Seeder
             'description' => 'No imprime',
             'importance' => 'Media',
             'deadline' => date("2017/11/29"),
-            'solved' => false
+            'solved' => false,
+            'date_scheduled' => date("2017/11/29"),
+            'time_scheduled' => date("101112")
         ]);
 
         Request::create([
@@ -185,7 +189,9 @@ class DatabaseSeeder extends Seeder
             'description' => 'No prende',
             'importance' => 'Alta',
             'deadline' => date("2017/10/28"),
-            'solved' => false
+            'solved' => false,
+            'date_scheduled' => date("2017/11/29"),
+            'time_scheduled' => date("101112")
         ]);
     }
 }
