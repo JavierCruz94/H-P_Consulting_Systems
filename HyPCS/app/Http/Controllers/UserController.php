@@ -20,7 +20,7 @@ class UserController extends Controller
             return redirect('/adminWatch');
         }
         if ($user->isConsultant()) {
-            return redirect('/newReq');
+            return redirect('/regVisit');
         }
         if ($user->isCustomer()) {
             return redirect('/customerReq');

@@ -48,7 +48,34 @@ class ConsultantController extends Controller
 
     public function registerVisitForm()
     {
-        return view ('pages.consultant.regVisit');
+        $requests = DB::table('requests')
+            ->where('id_consultant', 0)
+            ->get();
+        return view ('pages.consultant.regVisit')->with(['requests' => $requests]);
+    }
+
+    public function checkClientReq(Request $request)
+    {
+        //getting the ID of the consultant
+        $idConsult = \Auth::user()->id;
+
+        //getting the ID of the client searched
+        $idClient = DB::table('customers')
+            ->where('code', $request->codigo)
+            ->orwhere('name', $request->codigo)
+            ->value('id_customer');
+
+        //getting the requests not solved and assigned to the consultant
+        $requests = DB::table('requests')
+            ->where([['id_consultant', $idConsult],
+                ['id_customer', $idClient],
+                ['solved', 0]])
+            ->get();
+
+        //echo $requests;
+
+        //return view ('pages.consultant.regVisit');
+        return view('pages.consultant.regVisit') ->with(['requests' => $requests]);
     }
 
     public function showCalendar()
