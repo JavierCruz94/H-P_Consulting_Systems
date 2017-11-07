@@ -28,7 +28,12 @@
                 </div>
                 <h5 class="adminMarginAdd">Nivel: </h5>
                 <div class="input-group">
-                    <input name="nivel" type="text" class="form-control" placeholder="correo electronico" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="nivel" type="text" class="form-control" placeholder="1.Junior, 2.Senior, 3.Expertise, 4.Otro" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <!-- salio del admin.assignReq
+                        <select class="form-control" id="selectConsId" name="selectCons">
+                            <option value="1"></option>
+                        </select>
+                    -->
                 </div>
             </div>
             <div style = "padding-right: 350px; padding-top: 100px" class="pull-right">

@@ -18,6 +18,7 @@
                 <td> Fecha Req. </td>
                 <td> Asunto </td>
                 <td> Descr. </td>
+                <td> Gravedad </td>
                 <td> Consultor </td>
                 <td> Asignar </td>
             </tr>
@@ -31,6 +32,7 @@
                         <td>{{ substr($request->created_at, 0, 10) }}</td>
                         <td>{{ $request->subject }}</td>
                         <td>{{ $request->description }}</td>
+                        <td>{{ $request->importance }}</td>
                         <td>
                             <select class="form-control" id="selectConsId" name="selectCons">
                                 @foreach($consultants as $consultant)
@@ -54,6 +56,7 @@
                 <td> Fecha Req. </td>
                 <td> Asunto </td>
                 <td> Descr. </td>
+                <td>Gravedad</td>
                 <td> Consultor </td>
                 <td> Cambiar Consultor </td>
             </tr>
@@ -67,6 +70,7 @@
                         <td>{{ substr($requestAssign->created_at, 0, 10) }}</td>
                         <td>{{ $requestAssign->subject }}</td>
                         <td>{{ $requestAssign->description }}</td>
+                        <td>{{ $requestAssign->importance }}</td>
                         <td>{{ $requestAssign->firstname }} {{$requestAssign->lastname}}</td>
                         <td><button type="submit" class="btn btn-default">Cambiar</button></td>
                     </form>
