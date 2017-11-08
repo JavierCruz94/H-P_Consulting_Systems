@@ -21,19 +21,19 @@
             <button type="submit" class="btn btn-default" style="margin-top: 1em">Buscar solicitudes</button></td>
             </form>
             <div>
-                <form action="{{ route('schedReq') }}" method="GET">
+                <form action="{{ route('generateReport') }}" method="POST">
                     {{ csrf_field() }}
                     <h5 class="adminMarginAdd">Comentarios extra:</h5>
                     <div class="input-group">
-                        <textarea class="form-control" placeholder="Comentarios" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em; height: 150px; width: 250px"> </textarea>
+                        <textarea name="comentarios" class="form-control" placeholder="Comentarios" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em; height: 150px; width: 250px"> </textarea>
                     </div>
                     <h5 class="adminMarginAdd">Hora llegada:</h5>
                     <div class="input-group">
-                        <input type="time"  value="12:00">
+                        <input name="arrivalHour" type="time"  value="12:00">
                     </div>
                     <h5 class="adminMarginAdd">Hora salida:</h5>
                     <div class="input-group">
-                        <input type="time"  value="12:00">
+                        <input name="departureHour" type="time"  value="12:00">
                     </div>
                 </div>
             </div>
@@ -48,13 +48,13 @@
                             @foreach($requests as $request)
                                 <tr>
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="id_request" value="{{$request->id_request}}" />
-                                    <td><input name="{{$request->id_customer}}" type="checkbox" value="{{$request->id_request}}"></td>
+                                    <input type="hidden" name="longitud" value="" />
+                                    <td><input name="requests[]" type="checkbox" value="{{$request->id_request}}"></td>
                                     <td>{{ $request->subject }}</td>
                                 </tr>
                             @endforeach
                     </table>
-                    <button type="button" class="btn btn-default" style="margin-top: 1em">Generar reporte</button>
+                    <button type="submit" class="btn btn-default" style="margin-top: 1em">Generar reporte</button>
                 </form>
             </div>
         </div>

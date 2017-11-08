@@ -63,6 +63,7 @@ class ConsultantController extends Controller
         $idClient = DB::table('customers')
             ->where('code', $request->codigo)
             ->orwhere('name', $request->codigo)
+            ->orwhere('id_customer', $request->codigo)
             ->value('id_customer');
 
         //getting the requests not solved and assigned to the consultant
@@ -72,9 +73,6 @@ class ConsultantController extends Controller
                 ['solved', 0]])
             ->get();
 
-        //echo $requests;
-
-        //return view ('pages.consultant.regVisit');
         return view('pages.consultant.regVisit') ->with(['requests' => $requests]);
     }
 
@@ -89,5 +87,26 @@ class ConsultantController extends Controller
             ->get();
         //echo $appointments;
         return view ('pages.consultant.calendar')->with(['appointments' => $appointments]);
+    }
+
+    public function generateReport(Request $request)
+    {
+        $requests = array();
+        $checkboxes = $request->requests;
+        foreach ($checkboxes as $checkbox)
+        {
+            $temp = DB::table('requests')
+                ->where('id_request', $checkbox)
+                ->get();
+
+            array_push($requests, $temp);
+        }
+
+        $horas = array($request->arrivalHour, $request->departureHour);
+
+        $comments = $request->comentarios;
+        //var_dump($requests);
+        return view('pages.consultant.report')->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments]);
+
     }
 }

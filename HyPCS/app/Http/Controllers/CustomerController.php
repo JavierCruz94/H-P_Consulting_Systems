@@ -69,7 +69,9 @@ class CustomerController extends Controller
             'description' => $request -> description,
             'importance' => $request->importancia,
             'deadline' => $request ->deadline,
-            'solved' => false
+            'solved' => false,
+            'date_scheduled' => date("2017/11/29"),
+            'time_scheduled' => date("101112")
 
         ]);
 

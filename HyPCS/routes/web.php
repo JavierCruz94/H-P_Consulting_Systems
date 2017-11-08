@@ -65,8 +65,9 @@ Route::post('/schedReq', 'ConsultantController@scheduleRequest')->name('schedInD
 
 
 // Routes for registering a visit
-Route::get('/regVisit', 'ConsultantController@registerVisitForm');
+Route::get('/regVisit', 'ConsultantController@registerVisitForm')->name('regVisit');
 Route::get('/checkClientReq', 'ConsultantController@checkClientReq')->name('checkClientReq');
+Route::post('/checkClientReq', 'ConsultantController@generateReport')->name('generateReport');
 
 
 // Consultant's calendar route for scheduled requests

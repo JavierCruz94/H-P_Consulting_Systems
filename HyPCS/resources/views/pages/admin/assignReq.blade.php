@@ -14,11 +14,11 @@
         <table class="table">
             <tr style="font-weight: bold; margin: auto">
                 <td> Cliente </td>
-                <td> Codigo </td>
                 <td> Fecha Req. </td>
                 <td> Asunto </td>
                 <td> Descr. </td>
                 <td> Gravedad </td>
+                <td> Limite</td>
                 <td> Consultor </td>
                 <td> Asignar </td>
             </tr>
@@ -28,11 +28,11 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="id_request" value="{{$request->id_request}}" />
                         <td>{{ $request->name }}</td>
-                        <td>{{ $request->code }}</td>
                         <td>{{ substr($request->created_at, 0, 10) }}</td>
                         <td>{{ $request->subject }}</td>
                         <td>{{ $request->description }}</td>
                         <td>{{ $request->importance }}</td>
+                        <td>{{$request->deadline}}</td>
                         <td>
                             <select class="form-control" id="selectConsId" name="selectCons">
                                 @foreach($consultants as $consultant)
