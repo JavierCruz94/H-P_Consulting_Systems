@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/homepage.css') }}" rel="stylesheet" type="text/css">
+@endsection
+
 @section('title', 'HyPCS')
 
 @section('navbar')
@@ -19,10 +23,10 @@
                     </div>
 
                 </div>
-        <p style="font-size:17px; color:#03225C; text-align:justify;">
+        <p class ="text">
             “H&P Consultoría en Sistemas” (H&PCS) comienza a ofrecer sus servicios en 1996, bajo el nombre de “HCG Sistemas de Cómputo” comercializando productos de software y hardware, y realizando instalaciones de cableado estructurado, considerando siempre que las soluciones administrativas instaladas en una plataforma (hardware, sistemas operativos y comunicaciones) bien soportada y puesta a punto, funcionarán correctamente y quedando por mejorar los procesos de información y alimentación de datos por parte de la empresa - cliente.
         </p>
-        <p style="font-size:17px; color:#03225C; text-align:justify;">
+        <p class ="text">
             Actualmente se ofrecen las soluciones anteriores, adicionando los servicios de consultoría para optimización de procesos y uso de herramientas ofimáticas. Es distribuidor de los sistemas administrativos de ASPEL® y CONTPAQ i®, soportando los requisitos fiscales publicados por el SAT. Además, se busca ofrecer soluciones a la medida según los requerimientos del cliente.
         </p>
         <div class="col-xs-12">

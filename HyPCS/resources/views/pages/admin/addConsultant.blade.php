@@ -1,5 +1,8 @@
-    @extends('layouts.master')
+@extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/admin/addConsultant.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('title', 'HyPCS')
 
@@ -12,23 +15,23 @@
     <div>
         <form action="{{ route('addConsultantDB') }}" method="POST">
             {{ csrf_field() }}
-            <div style = "padding-left: 300px; padding-top: 100px" class="pull-left">
+            <div class="pull-left nuevoConsultor">
                 <h3><span class="label label-default" id="firstAdd">Nuevo Consultor</span></h3>
                 <h5 class="adminMarginAdd">Nombre: </h5>
                 <div class="input-group">
-                    <input name="firstname" type="text" class="form-control" placeholder="Nombre del Consultor" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="firstname" type="text" class="form-control inputBox" placeholder="Nombre del Consultor" aria-describedby="basic-addon2">
                 </div>
                 <h5 class="adminMarginAdd">Apellido: </h5>
                 <div class="input-group">
-                    <input name="lastname" type="text" class="form-control" placeholder="Apellido del Consultor" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="lastname" type="text" class="form-control inputBox" placeholder="Apellido del Consultor" aria-describedby="basic-addon2">
                 </div>
                 <h5 class="adminMarginAdd">E-mail: </h5>
                 <div class="input-group">
-                    <input name="email" type="text" class="form-control" placeholder="correo electronico" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="email" type="text" class="form-control inputBox" placeholder="correo electronico" aria-describedby="basic-addon2">
                 </div>
                 <h5 class="adminMarginAdd">Nivel: </h5>
                 <div class="input-group">
-                    <input name="nivel" type="text" class="form-control" placeholder="1.Junior, 2.Senior, 3.Expertise, 4.Otro" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="nivel" type="text" class="form-control inputBox" placeholder="1.Junior, 2.Senior, 3.Expertise, 4.Otro" aria-describedby="basic-addon2">
                     <!-- salio del admin.assignReq
                         <select class="form-control" id="selectConsId" name="selectCons">
                             <option value="1"></option>
@@ -36,17 +39,17 @@
                     -->
                 </div>
             </div>
-            <div style = "padding-right: 350px; padding-top: 100px" class="pull-right">
+            <div class="pull-right detallesCuenta">
                 <h3><span class="label label-default" id="firstAdd">Detalles de la cuenta</span></h3>
                 <h5 class="adminMarginAdd">Usuario: </h5>
                 <div class="input-group">
-                    <input name="username" type="text" class="form-control" placeholder="User" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="username" type="text" class="form-control inputBox" placeholder="User" aria-describedby="basic-addon2">
                 </div>
                 <h5 class="adminMarginAdd">Pasword: </h5>
                 <div class="input-group">
-                    <input name="password" type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon2" style=" margin-top: -.5em; margin-left: 1em;">
+                    <input name="password" type="text" class="form-control inputBox" placeholder="Password" aria-describedby="basic-addon2">
                 </div>
-                <button type="submit" class="btn btn-default" style="margin-top: 1em">Agregar</button></td>
+                <button type="submit" class="btn btn-default">Agregar</button></td>
             </div>
         </form>
     </div>

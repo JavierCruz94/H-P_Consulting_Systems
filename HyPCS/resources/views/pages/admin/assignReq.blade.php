@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/admin/assignReq.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('title', 'HyPCS')
 
@@ -12,7 +15,7 @@
     <h3><span class="label label-default" id="firstAdd">Asignar Solicitudes</span></h3>
     <div class="table-responsive">
         <table class="table">
-            <tr style="font-weight: bold; margin: auto">
+            <tr class = "tableRow">
                 <td> Cliente </td>
                 <td> Fecha Req. </td>
                 <td> Asunto </td>
@@ -50,7 +53,7 @@
     <h3><span class="label label-default" id="firstAdd">Solicitudes con Consultor</span></h3>
     <div class="table-responsive">
         <table class="table">
-            <tr style="font-weight: bold; margin: auto">
+            <tr class = "tableRow">
                 <td> Cliente </td>
                 <td> Codigo </td>
                 <td> Fecha Req. </td>

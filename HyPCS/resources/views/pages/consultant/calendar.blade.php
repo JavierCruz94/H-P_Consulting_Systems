@@ -3,6 +3,10 @@
 
 @section('title', 'HyPCS')
 
+@section('custom_head')
+    <link href="{{ asset('css/consultant/calendar.css') }}" rel="stylesheet" type="text/css">
+@endsection
+
 @section('navbar')
     @include('layouts.navbarConsultant')
 @endsection
@@ -12,7 +16,7 @@
     <h3><span class="label label-default" id="firstAdd">Citas agendadas</span></h3>
     <div class="table-responsive">
         <table class="table">
-            <tr style="font-weight: bold; margin: auto">
+            <tr class = "tableRow">
                 <td> Cliente </td>
                 <td> Codigo </td>
                 <td> Asunto </td>
