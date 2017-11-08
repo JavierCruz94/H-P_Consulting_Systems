@@ -37,6 +37,7 @@ class CustomerController extends Controller
 
         $appointments = DB::table('requests')
             ->leftJoin('customers', 'requests.id_customer', '=', 'customers.id_customer')
+            ->leftJoin('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
             ->where([['requests.id_customer', '=', $idCustomer],
                 ['schedule', '=', '1']])
             ->get();

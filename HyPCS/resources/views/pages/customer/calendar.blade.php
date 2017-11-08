@@ -13,7 +13,7 @@
     <div class="table-responsive">
         <table class="table">
             <tr style="font-weight: bold; margin: auto">
-                <td> Cliente </td>
+                <td> Consultor </td>
                 <td> Codigo </td>
                 <td> Asunto </td>
                 <td> Descr. </td>
@@ -24,7 +24,7 @@
                     <form action="{{ route('schedReq') }}" method="GET">
                         {{ csrf_field() }}
                         <input type="hidden" name="id_request" value="{{$appointment->id_request}}" />
-                        <td>{{ $appointment->name }}</td>
+                        <td>{{ $appointment->firstname }} {{$appointment->lastname}}</td>
                         <td>{{ $appointment->code }}</td>
                         <td>{{ $appointment->subject }}</td>
                         <td>{{ $appointment->description }}</td>

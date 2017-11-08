@@ -9,13 +9,15 @@
 
 @section('content')
     <br> <br> <br>
-    <form action="{{ route('checkClientReq') }}" method="GET">
+    <form action="{{ route('signReport') }}" method="POST">
         {{ csrf_field() }}
         <h3><span class="label label-default" id="firstAdd">Reporte de Visita</span></h3>
         <div>
+            <input type="hidden" name="arrival_time" value="{{$horas[0]}}" />
             <b>Hora llegada:</b> {{$horas[0]}}
         </div>
         <div>
+            <input type="hidden" name="finishing_time" value="{{$horas[1]}}" />
             <b>Hora salida:</b> {{$horas[1]}}
         </div>
         -------------------------------
@@ -29,14 +31,16 @@
             -------------------------------
         @endforeach
         <div>
+            <input type="hidden" name="comments" value="{{$comments}}" />
             <b>Comentarios:</b> {{$comments}}
         </div>
         <div>
+            <input type="hidden" name="id_request" value="{{json_encode($requests)}}" />
             <button type="submit"> Firmar </button>
         </div>
     </form>
     <form action="{{ route('checkClientReq') }}" method="GET">
-    {{ csrf_field() }}
+        {{ csrf_field() }}
         <input type="hidden" name="codigo" value="{{$requests[0][0]->id_customer}}" />
         <button type="submit"> Modificar reporte </button>
     </form>
