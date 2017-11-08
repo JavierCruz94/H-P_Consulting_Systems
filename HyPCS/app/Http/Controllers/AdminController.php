@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function watchCustomers()
     {
         $customers = DB::table('customers')
-            ->select('customers.id_customer', 'customers.name', 'customers.code', 'customers.created_at', DB::raw('count(requests.id_customer) as cantReq'))
+            ->select('customers.id_customer', 'customers.name', 'customers.code', 'customers.created_at', DB::raw('SUM(if(requests.solved=0,1,0)) as cantReq'))
             ->leftjoin('requests', 'customers.id_customer', '=', 'requests.id_customer')
             ->groupby('code')
             ->orderby('code', 'asc')
@@ -97,15 +97,16 @@ class AdminController extends Controller
             ->where('id_consultant', '=', null)
             ->get();
         $consultants = DB::table('consultants')
-            ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('count(requests.id_consultant) as cantidad'))
-            ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant')
+            ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('SUM(if(requests.solved=0,1,0)) as cantidad'))
+            ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant') 
             ->groupby('consultants.id_consultant')
             ->get();
 
         $requestsAssigned = DB::table('requests')
             ->join('customers', 'requests.id_customer', '=', 'customers.id_customer')
             ->join('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
-            ->where('requests.id_consultant', '<>', null)
+            ->where([['requests.id_consultant', '<>', null],
+                    ['solved','<>', 1]])
             ->get();
         return view('pages.admin.assignReq') ->with(['consultants' => $consultants, 'requests' => $requests, 'requestsAssigned' => $requestsAssigned]);
     }

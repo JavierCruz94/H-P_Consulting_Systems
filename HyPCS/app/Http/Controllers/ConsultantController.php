@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Report;
 
 class ConsultantController extends Controller
 {
@@ -107,6 +108,36 @@ class ConsultantController extends Controller
         $comments = $request->comentarios;
         //var_dump($requests);
         return view('pages.consultant.report')->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments]);
+
+    }
+
+    public function signReport(Request $request) {
+        $originalArray = json_decode($request->id_request);
+
+        Report::create([
+            'comments' => $request->comments,
+            'arrival_time' => $request->arrival_time,
+            'finishing_time' => $request->finishing_time,
+            'registeredBy' => 1
+        ]);
+
+        $id_report = DB::table('reports')
+            ->where([['comments', $request->comments],
+                ['arrival_time',$request->arrival_time],
+                ['finishing_time',$request->finishing_time]])
+            ->value('id_report');
+
+        //var_dump($originalArray);
+
+        foreach ($originalArray as $original) {
+            DB::table('requests')
+                ->where('id_request', $original[0]->id_request)
+                ->update(['id_report' => $id_report,
+                    'solved'=>1]);
+
+        }
+
+        return redirect('/regVisit')->with('success','Reporte Creado!');
 
     }
 }
