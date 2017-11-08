@@ -68,6 +68,7 @@ Route::post('/schedReq', 'ConsultantController@scheduleRequest')->name('schedInD
 Route::get('/regVisit', 'ConsultantController@registerVisitForm')->name('regVisit');
 Route::get('/checkClientReq', 'ConsultantController@checkClientReq')->name('checkClientReq');
 Route::post('/checkClientReq', 'ConsultantController@generateReport')->name('generateReport');
+Route::post('/regVisit', 'ConusltantController@signReport')->name('signReport');
 
 
 // Consultant's calendar route for scheduled requests

@@ -20,7 +20,8 @@ class Request extends Model
         'deadline',
         'solved',
         'date_scheduled',
-        'time_scheduled'
+        'time_scheduled',
+        'id_report'
     ];
 
     protected $primaryKey = 'id_request';

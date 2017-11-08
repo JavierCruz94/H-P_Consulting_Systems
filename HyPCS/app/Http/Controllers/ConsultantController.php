@@ -109,4 +109,8 @@ class ConsultantController extends Controller
         return view('pages.consultant.report')->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments]);
 
     }
+
+    public function signReport() {
+
+    }
 }

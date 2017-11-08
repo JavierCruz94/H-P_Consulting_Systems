@@ -163,7 +163,8 @@ class DatabaseSeeder extends Seeder
             'deadline' => date("2017/12/31"),
             'solved' => false,
             'date_scheduled' => date("2017/11/29"),
-            'time_scheduled' => date("101112")
+            'time_scheduled' => date("101112"),
+            'id_report' => null
         ]);
 
         Request::create([
@@ -177,7 +178,8 @@ class DatabaseSeeder extends Seeder
             'deadline' => date("2017/11/29"),
             'solved' => false,
             'date_scheduled' => date("2017/11/29"),
-            'time_scheduled' => date("101112")
+            'time_scheduled' => date("101112"),
+            'id_report' => null
         ]);
 
         Request::create([
@@ -191,7 +193,8 @@ class DatabaseSeeder extends Seeder
             'deadline' => date("2017/10/28"),
             'solved' => false,
             'date_scheduled' => date("2017/11/29"),
-            'time_scheduled' => date("101112")
+            'time_scheduled' => date("101112"),
+            'id_report' => null
         ]);
     }
 }
