@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/customer/calendar.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('title', 'HyPCS')
 
@@ -12,7 +15,7 @@
     <h3><span class="label label-default" id="firstAdd">Citas agendadas</span></h3>
     <div class="table-responsive">
         <table class="table">
-            <tr style="font-weight: bold; margin: auto">
+            <tr class = "tableRow">
                 <td> Consultor </td>
                 <td> Codigo </td>
                 <td> Asunto </td>

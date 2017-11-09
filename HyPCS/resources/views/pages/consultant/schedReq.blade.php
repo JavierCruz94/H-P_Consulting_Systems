@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/consultant/schedReq.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('title', 'HyPCS')
 
@@ -21,6 +24,6 @@
         <input name="timeSched" type="time"  value="12:00">
         <br><br>
         <input name="daySched" id="entryDate" type="date" name="entryDate" value="2017-07-05"><br>
-        <button type="submit" class="btn btn-default" style="margin-top: 1em">Asignar Cita</button></td>
+        <button type="submit" class="btn btn-default button">Asignar Cita</button></td>
     </form>
 @endsection

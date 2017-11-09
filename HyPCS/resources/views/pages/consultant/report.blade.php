@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('title', 'HyPCS')
 
 @section('navbar')

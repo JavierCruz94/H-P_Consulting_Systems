@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('custom_head')
+    <link href="{{ asset('css/consultant/newReq.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('title', 'HyPCS')
 
@@ -12,7 +15,7 @@
     <h3><span class="label label-default" id="firstAdd">Nuevas Solicitudes</span></h3>
     <div class="table-responsive">
         <table class="table">
-            <tr style="font-weight: bold; margin: auto">
+            <tr class="tableRow">
                 <td> Cliente </td>
                 <td> Codigo </td>
                 <td> Fecha Req. </td>
