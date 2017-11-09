@@ -98,7 +98,7 @@ class AdminController extends Controller
             ->get();
         $consultants = DB::table('consultants')
             ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('SUM(if(requests.solved=0,1,0)) as cantidad'))
-            ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant') 
+            ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant')
             ->groupby('consultants.id_consultant')
             ->get();
 
