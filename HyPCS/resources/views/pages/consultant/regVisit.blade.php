@@ -26,15 +26,15 @@
                 {{ csrf_field() }}
                 <h5 class="adminMarginAdd">Comentarios extra:</h5>
                 <div class="input-group">
-                    <textarea name="comentarios" class="form-control comentarios" placeholder="Comentarios" aria-describedby="basic-addon2"> </textarea>
+                    <textarea name="comentarios" class="form-control comentarios" placeholder="Comentarios" aria-describedby="basic-addon2"> {{$comments}}</textarea>
                 </div>
                 <h5 class="adminMarginAdd">Hora llegada:</h5>
                 <div class="input-group">
-                    <input name="arrivalHour" type="time"  value="12:00">
+                    <input name="arrivalHour" type="time"  value="{{$arrivalHour}}">
                 </div>
                 <h5 class="adminMarginAdd">Hora salida:</h5>
                 <div class="input-group">
-                    <input name="departureHour" type="time"  value="12:00">
+                    <input name="departureHour" type="time"  value="{{$departureHour}}">
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@
 
                     <div class="form-group">
                         <h3><span class="label label-default" id="firstAdd">Comentarios</span></h3>
-                        <textarea class="form-control" rows="3" id="comment" readonly>{{$comments}}</textarea>
+                        <textarea class="form-control" rows="3" id="comentarios" readonly>{{$comments}}</textarea>
                     </div>
 
                     <div class="row">
@@ -95,9 +95,13 @@
                             </form>
                         </div>
                         <div class="col-md-11">
-                            <form action="{{ route('checkClientReq') }}" method="GET">
+                            <form action="/checkClientReq" method="GET">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="codigo" value="{{$requests[0][0]->id_customer}}" />
+                                <input type="hidden" name="arrivalHour" value="{{$horas[0]}}" />
+                                <input type="hidden" name="departureHour" value="{{$horas[1]}}" />
+                                <input type="hidden" name="comments" value="{{$comments}}" />
+                                <input type="hidden" name="id_request" value="{{json_encode($requests)}}" />
                                 <button type="submit" class="btn btn-default">Modificar reporte</button>
                             </form>
                         </div>

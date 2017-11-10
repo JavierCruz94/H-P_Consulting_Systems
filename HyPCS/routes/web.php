@@ -69,7 +69,9 @@ Route::get('/regVisit', 'ConsultantController@registerVisitForm')->name('regVisi
 Route::get('/checkClientReq', 'ConsultantController@checkClientReq')->name('checkClientReq');
 Route::post('/checkClientReq', 'ConsultantController@generateReport')->name('generateReport');
 Route::post('/signReport', 'ConsultantController@signReport')->name('signReport');
+Route::get('/modificar', 'ConsultantController@modificar');
 
 
 // Consultant's calendar route for scheduled requests
 Route::get('/calendarCons', 'ConsultantController@showCalendar')->name('calendarCons');
+

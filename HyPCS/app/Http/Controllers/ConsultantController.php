@@ -52,7 +52,8 @@ class ConsultantController extends Controller
         $requests = DB::table('requests')
             ->where('id_consultant', 0)
             ->get();
-        return view ('pages.consultant.regVisit')->with(['requests' => $requests]);
+        return view ('pages.consultant.regVisit')->with(['requests' => $requests,
+            'arrivalHour' => '12:00', 'departureHour' => '13:00', 'comments' => '']);
     }
 
     public function checkClientReq(Request $request)
@@ -74,7 +75,10 @@ class ConsultantController extends Controller
                 ['solved', 0]])
             ->get();
 
-        return view('pages.consultant.regVisit') ->with(['requests' => $requests]);
+
+        return view('pages.consultant.regVisit')->with(['requests' => $requests,
+            'arrivalHour' => $request->arrivalHour, 'departureHour' => $request->departureHour,
+            'comments' => $request->comments]);
     }
 
     public function showCalendar()
@@ -143,5 +147,9 @@ class ConsultantController extends Controller
 
         return redirect('/regVisit')->with('success','Reporte Creado!');
 
+    }
+
+    public function modificar() {
+        return redirect()->back()->withInput();
     }
 }
