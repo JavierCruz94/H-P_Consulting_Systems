@@ -27,7 +27,7 @@
                     <td>{{ $customer->code }}</td>
                     <td>{{ substr($customer->created_at, 0, 10) }}</td>
                     <td>{{$customer->cantReq}}</td>
-                    <td>0</td>
+                    <td>{{substr($customer->ultReq, 0, 10)}}</td>
                 </tr>
                 @endforeach</td>
             </tr>
