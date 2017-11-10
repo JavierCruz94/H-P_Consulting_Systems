@@ -39,7 +39,8 @@ class CustomerController extends Controller
             ->leftJoin('customers', 'requests.id_customer', '=', 'customers.id_customer')
             ->leftJoin('consultants', 'requests.id_consultant', '=', 'consultants.id_consultant')
             ->where([['requests.id_customer', '=', $idCustomer],
-                ['schedule', '=', '1']])
+                ['schedule', '=', '1'],
+                ['solved', '=', '0']])
             ->get();
         //echo $appointments;
         return view ('pages.customer.calendar')->with(['appointments' => $appointments]);

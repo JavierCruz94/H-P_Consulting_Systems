@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function watchCustomers()
     {
         $customers = DB::table('customers')
-            ->select('customers.id_customer', 'customers.name', 'customers.code', 'customers.created_at', DB::raw('SUM(if(requests.solved=0,1,0)) as cantReq'))
+            ->select('customers.id_customer', 'customers.name', 'customers.code', 'customers.created_at', DB::raw('SUM(if(requests.solved=0,1,0)) as cantReq'), DB::raw('max(requests.created_at)as ultReq'))
             ->leftjoin('requests', 'customers.id_customer', '=', 'requests.id_customer')
             ->groupby('code')
             ->orderby('code', 'asc')

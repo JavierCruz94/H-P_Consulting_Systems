@@ -46,7 +46,7 @@
                                 <table class="table-bordered">
                                     <tr>
                                         <th>Código de Cliente</th>
-                                        <td>{{$customer->id_customer}}</td>
+                                        <td>{{$customer->}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nombre de Cliente</th>
