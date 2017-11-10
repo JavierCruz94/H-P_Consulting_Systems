@@ -107,7 +107,11 @@ class ConsultantController extends Controller
 
         $comments = $request->comentarios;
         //var_dump($requests);
-        return view('pages.consultant.report')->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments]);
+
+        $customer = DB::table('customers')->where('id_customer', $requests[0][0]->id_customer)->first();
+
+        return view('pages.consultant.report')
+            ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer]);
 
     }
 

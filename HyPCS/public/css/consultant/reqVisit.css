@@ -2,6 +2,7 @@
     width: 25%;
     height: 100%;
     float: left;
+
 }
 
 .tableContainer{
@@ -12,12 +13,15 @@
 
 .tableRow{
     font-weight: bold;
-    margin: auto
+    margin: auto;
 }
 
 .button{
     margin-top: 1em;
+
 }
+
+
 .nombreCliente{
     margin-top: -.5em;
     margin-left: 1em;
