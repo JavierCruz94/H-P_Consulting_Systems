@@ -31,12 +31,11 @@
                 </div>
                 <h5 class="adminMarginAdd">Nivel: </h5>
                 <div class="input-group">
-                    <input name="nivel" type="text" class="form-control inputBox" placeholder="1.Junior, 2.Senior, 3.Expertise, 4.Otro" aria-describedby="basic-addon2">
-                    <!-- salio del admin.assignReq
-                        <select class="form-control" id="selectConsId" name="selectCons">
-                            <option value="1"></option>
-                        </select>
-                    -->
+                    <select class="form-control" id="selectConsId" name="nivel">
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Expertise">Expertise</option>
+                    </select>
                 </div>
             </div>
             <div class="pull-right detallesCuenta">

@@ -70,6 +70,7 @@ class AdminController extends Controller
     }
 
     public function addConsultant(Request $request) {
+
         User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password),
