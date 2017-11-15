@@ -115,9 +115,10 @@ class ConsultantController extends Controller
         //var_dump($requests);
 
         $customer = DB::table('customers')->where('id_customer', $requests[0][0]->id_customer)->first();
+        $consultant = DB::table('consultants')->where('id_consultant', $requests[0][0]->id_consultant)->first();
 
         return view('pages.consultant.report')
-            ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer]);
+            ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer, 'consultant'=>$consultant]);
 
     }
 

@@ -4,6 +4,8 @@
 
 @section('custom_head')
     <link href="{{ asset('css/consultant/report.css') }}" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/testing.js') }}"></script>
 @endsection
 
 @section('navbar')
@@ -46,7 +48,7 @@
                                 <table class="table-bordered">
                                     <tr>
                                         <th>Código de Cliente</th>
-                                        <td>{{$customer->}}</td>
+                                        <td>{{$customer-> code}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nombre de Cliente</th>
@@ -82,7 +84,8 @@
                         <h3><span class="label label-default" id="firstAdd">Comentarios</span></h3>
                         <textarea class="form-control" rows="3" id="comentarios" readonly>{{$comments}}</textarea>
                     </div>
-
+                    <canvas id="signature-pad1" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
+                    <canvas id="signature-pad2" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
                     <div class="row">
                         <div class="col-md-1">
                             <form action="{{ route('signReport') }}" method="POST">
