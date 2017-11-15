@@ -46,7 +46,7 @@
                                 <table class="table-bordered">
                                     <tr>
                                         <th>Código de Cliente</th>
-                                        <td>{{$customer->}}</td>
+                                        <td>{{$customer->code}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nombre de Cliente</th>
@@ -94,7 +94,7 @@
                                 <button type="submit" class="btn btn-default">Firmar</button>
                             </form>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-2">
                             <form action="/checkClientReq" method="GET">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="codigo" value="{{$requests[0][0]->id_customer}}" />
@@ -103,6 +103,16 @@
                                 <input type="hidden" name="comments" value="{{$comments}}" />
                                 <input type="hidden" name="id_request" value="{{json_encode($requests)}}" />
                                 <button type="submit" class="btn btn-default">Modificar reporte</button>
+                            </form>
+                        </div>
+                        <div class="col-md-9">
+                            <form action="/pdf" method="GET">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="horas" value="{{json_encode($horas)}}" />
+                                <input type="hidden" name="customer" value="{{json_encode($customer)}}" />
+                                <input type="hidden" name="requests" value="{{json_encode($requests)}}">
+                                <input type="hidden" name="comments" value="{{$comments}}">
+                                <button type="submit" class="btn btn-default">pdf</button>
                             </form>
                         </div>
                     </div>

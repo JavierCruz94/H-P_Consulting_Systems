@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Report;
+use PDF;
 
 class ConsultantController extends Controller
 {
@@ -118,6 +120,45 @@ class ConsultantController extends Controller
 
         return view('pages.consultant.report')
             ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer]);
+
+    }
+
+    public function pdf(Request $request){
+
+        $horas = json_decode($request->horas);
+        $customer = json_decode($request->customer);
+        $requests = json_decode($request->requests);
+        $comments = $request->comments;
+
+
+        $html = view('pages.consultant.report')->with([
+            'horas' => $horas,
+            'customer' => $customer,
+            'requests' => $requests,
+            'comments' => $comments
+        ]);
+
+        $pdf = PDF::loadView('pages.consultant.pdf', [
+            'horas' => $horas,
+            'customer' => $customer,
+            'requests' => $requests,
+            'comments' => $comments,
+            'date' => Carbon::now()->toFormattedDateString()
+        ]);
+
+        return $pdf->download('prueba.pdf');
+
+        //var_dump($pdf);
+
+
+        /*
+        ini_set("xdebug.var_display_max_children", -1);
+        ini_set("xdebug.var_display_max_data", -1);
+        ini_set("xdebug.var_display_max_depth", -1);
+        var_dump($html);
+        */
+
+
 
     }
 
