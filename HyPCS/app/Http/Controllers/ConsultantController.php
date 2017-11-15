@@ -78,9 +78,19 @@ class ConsultantController extends Controller
                 ['solved', 0]])
             ->get();
 
+        if ($request->arrivalHour == null) {
+            $arrival = "12:00";
+        } else {
+            $arrival = $request->arrivalHour;
+        }
+        if ($request->departureHour == null) {
+            $departure = "13:00";
+        } else {
+            $departure = $request->departureHour;
+        }
 
         return view('pages.consultant.regVisit')->with(['requests' => $requests,
-            'arrivalHour' => $request->arrivalHour, 'departureHour' => $request->departureHour,
+            'arrivalHour' => $arrival, 'departureHour' => $departure,
             'comments' => $request->comments]);
     }
 
@@ -117,9 +127,10 @@ class ConsultantController extends Controller
         //var_dump($requests);
 
         $customer = DB::table('customers')->where('id_customer', $requests[0][0]->id_customer)->first();
+        $consultant = DB::table('consultants')->where('id_consultant', $requests[0][0]->id_consultant)->first();
 
         return view('pages.consultant.report')
-            ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer]);
+            ->with(['requests'=> $requests, 'horas'=>$horas, 'comments'=>$comments, 'customer' => $customer, 'consultant'=>$consultant]);
 
     }
 

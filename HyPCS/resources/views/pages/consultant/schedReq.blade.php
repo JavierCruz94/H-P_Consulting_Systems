@@ -23,7 +23,7 @@
         <h5 class="adminMarginAdd">Hora asignada:</h5>
         <input name="timeSched" type="time"  value="12:00">
         <br><br>
-        <input name="daySched" id="entryDate" type="date" name="entryDate" value="2017-07-05"><br>
+        <input name="daySched" id="entryDate" type="date" name="entryDate" value="{{Carbon\Carbon::now()}}"><br>
         <button type="submit" class="btn btn-default button">Asignar Cita</button></td>
     </form>
 @endsection
