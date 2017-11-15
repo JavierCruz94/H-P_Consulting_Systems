@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="deadlineId">Fecha límite:</label>
-                <input id="deadlineId" name = "deadline" id="entryDate" class="form-control" type="date" name="entryDate" value="2017-07-05">
+                <input id="deadlineId" name = "deadline" id="entryDate" class="form-control" type="date" name="entryDate" value="{{Carbon\Carbon::now()}}">
             </div>
 
             <div class="form-group">

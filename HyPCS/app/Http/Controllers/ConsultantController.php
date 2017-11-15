@@ -76,9 +76,19 @@ class ConsultantController extends Controller
                 ['solved', 0]])
             ->get();
 
+        if ($request->arrivalHour == null) {
+            $arrival = "12:00";
+        } else {
+            $arrival = $request->arrivalHour;
+        }
+        if ($request->departureHour == null) {
+            $departure = "13:00";
+        } else {
+            $departure = $request->departureHour;
+        }
 
         return view('pages.consultant.regVisit')->with(['requests' => $requests,
-            'arrivalHour' => $request->arrivalHour, 'departureHour' => $request->departureHour,
+            'arrivalHour' => $arrival, 'departureHour' => $departure,
             'comments' => $request->comments]);
     }
 
