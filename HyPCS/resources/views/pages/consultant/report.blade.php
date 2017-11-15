@@ -85,24 +85,19 @@
                         <textarea class="form-control" rows="3" id="comentarios" readonly>{{$comments}}</textarea>
                     </div>
 
-
-                    <canvas id="signature-pad1" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
-                    <canvas id="signature-pad2" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
+                    <span class="sign-spans">
+                        <h2>Firma del Cliente</h2>
+                        <canvas id="signature-pad1" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
+                    </span>
+                    <span class="sign-spans">
+                        <h2>Firma del Consultor</h2>
+                        <canvas id="signature-pad2" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
+                    </span>
 
 
 
 
                     <div class="row">
-                        <div class="col-md-1">
-                            <form action="{{ route('signReport') }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="arrival_time" value="{{$horas[0]}}" />
-                                <input type="hidden" name="finishing_time" value="{{$horas[1]}}" />
-                                <input type="hidden" name="comments" value="{{$comments}}" />
-                                <input type="hidden" name="id_request" value="{{json_encode($requests)}}" />
-                                <button type="submit" class="btn btn-default">Firmar</button>
-                            </form>
-                        </div>
                         <div class="col-md-2">
                             <form action="/checkClientReq" method="GET">
                                 {{ csrf_field() }}
@@ -114,14 +109,22 @@
                                 <button type="submit" class="btn btn-default">Modificar reporte</button>
                             </form>
                         </div>
-                        <div class="col-md-9">
-                            <form action="/pdf" method="GET">
+                        <div class="col-md-10">
+                            <button class="btn btn-default" onclick="postPDF();">Firmar</button>
+                            <form action="{{route('signReport')}}" method="POST" id="signForm">
                                 {{ csrf_field() }}
+                                {{--pdf inputs--}}
                                 <input type="hidden" name="horas" value="{{json_encode($horas)}}" />
                                 <input type="hidden" name="customer" value="{{json_encode($customer)}}" />
                                 <input type="hidden" name="requests" value="{{json_encode($requests)}}">
                                 <input type="hidden" name="comments" value="{{$comments}}">
-                                <button type="submit" class="btn btn-default">pdf</button>
+                                <input type="hidden" name="url_client_sign" id="url_client_sign" value=""/>
+                                <input type="hidden" name="url_consult_sign" id="url_consult_sign" value=""/>
+                                {{--sign inputs --}}
+                                <input type="hidden" name="arrival_time" value="{{$horas[0]}}" />
+                                <input type="hidden" name="finishing_time" value="{{$horas[1]}}" />
+                                <input type="hidden" name="comments" value="{{$comments}}" />
+                                <input type="hidden" name="id_request" value="{{json_encode($requests)}}" />
                             </form>
                         </div>
                     </div>

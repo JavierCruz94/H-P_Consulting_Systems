@@ -2,6 +2,9 @@
 
 @section('custom_head')
     <link href="{{ asset('css/consultant/reqVisit.css') }}" rel="stylesheet" type="text/css">
+    @if(isset($success))
+        <meta http-equiv="refresh" content="1;url={{route('pdf')}}"/>
+    @endif
 @endsection
 
 @section('title', 'HyPCS')
@@ -59,4 +62,5 @@
             </form>
             </div>
         </div>
+
 @endsection

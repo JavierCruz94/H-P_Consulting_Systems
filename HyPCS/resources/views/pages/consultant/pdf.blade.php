@@ -94,18 +94,18 @@
     }
 
     #firmas img{
-        width: 100px;
-        heiht: 100px;
+        width: 150px;
+        heiht: 150px;
     }
 
     #firma-cliente-img{
         display: inline-block;
-        margin-left: 130px;
+        margin-left: 110px;
     }
 
     #firma-consult-img{
         display: inline-block;
-        margin-left: 230px;
+        margin-left: 180px;
     }
 
     #firmas-lineas{
@@ -212,8 +212,10 @@
 
     <div>
         <div id="firmas">
-            <img src="sign.png" id="firma-cliente-img"/>
-            <img src="sign.png" id="firma-consult-img"/>
+
+            <img src="{{$url_client_sign}}" id="firma-cliente-img"/>
+            <img src="{{$url_consult_sign}}" id="firma-consult-img"/>
+
         </div>
 
         <div id="firmas-lineas">

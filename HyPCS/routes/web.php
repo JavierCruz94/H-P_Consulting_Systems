@@ -72,7 +72,7 @@ Route::post('/signReport', 'ConsultantController@signReport')->name('signReport'
 Route::get('/modificar', 'ConsultantController@modificar');
 
 
-Route::get('/pdf', 'ConsultantController@pdf');
+Route::get('/pdf', 'ConsultantController@pdf')->name('pdf');
 
 
 // Consultant's calendar route for scheduled requests

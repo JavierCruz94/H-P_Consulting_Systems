@@ -22,3 +22,7 @@ textarea {
 #main-container {
     padding: 10px;
 }
+
+.sign-spans{
+    display: inline-block;
+}

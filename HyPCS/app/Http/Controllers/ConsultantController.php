@@ -50,13 +50,30 @@ class ConsultantController extends Controller
         return redirect('/newReq')->with('success','Cita agendada!');
     }
 
-    public function registerVisitForm()
+    public function registerVisitForm(Request $request)
     {
         $requests = DB::table('requests')
             ->where('id_consultant', 0)
             ->get();
-        return view ('pages.consultant.regVisit')->with(['requests' => $requests,
-            'arrivalHour' => '12:00', 'departureHour' => '13:00', 'comments' => '']);
+
+        if (isset($request->success)){
+
+
+            return view ('pages.consultant.regVisit')->with([
+                'requests' => $requests,
+                'arrivalHour' => '12:00',
+                'departureHour' => '13:00',
+                'comments' => '',
+                'success' => $request->success]);
+        }
+        else {
+            return view ('pages.consultant.regVisit')->with([
+                'requests' => $requests,
+                'arrivalHour' => '12:00',
+                'departureHour' => '13:00',
+                'comments' => '']);
+        }
+
     }
 
     public function checkClientReq(Request $request)
@@ -136,44 +153,52 @@ class ConsultantController extends Controller
 
     public function pdf(Request $request){
 
-        $horas = json_decode($request->horas);
-        $customer = json_decode($request->customer);
-        $requests = json_decode($request->requests);
-        $comments = $request->comments;
 
+        // In here, we retrieve the data saved to user it later
+        $data = $request->session()->get('pdf_data');
 
-        $html = view('pages.consultant.report')->with([
-            'horas' => $horas,
-            'customer' => $customer,
-            'requests' => $requests,
-            'comments' => $comments
-        ]);
+        $horas = $data[0];
+        $customer = $data[1];
+        $requests = $data[2];
+        $comments = $data[3];
+        $url_client_sign = $data[4];
+        $url_consult_sign = $data[5];
 
         $pdf = PDF::loadView('pages.consultant.pdf', [
             'horas' => $horas,
             'customer' => $customer,
             'requests' => $requests,
             'comments' => $comments,
-            'date' => Carbon::now()->toFormattedDateString()
+            'date' => Carbon::now()->toFormattedDateString(),
+            'url_client_sign' => $url_client_sign,
+            'url_consult_sign' => $url_consult_sign
         ]);
 
+
+        // And erase the variable from session
+        $request->session()->forget('pdf_data');
+
         return $pdf->download('prueba.pdf');
-
-        //var_dump($pdf);
-
-
-        /*
-        ini_set("xdebug.var_display_max_children", -1);
-        ini_set("xdebug.var_display_max_data", -1);
-        ini_set("xdebug.var_display_max_depth", -1);
-        var_dump($html);
-        */
-
-
 
     }
 
     public function signReport(Request $request) {
+        // First we save de data needed to generate the report and save it in the session
+
+        $horas = json_decode($request->horas);
+        $customer = json_decode($request->customer);
+        $requests = json_decode($request->requests);
+        $comments = $request->comments;
+        $url_client_sign = $request->url_client_sign;
+        $url_consult_sign = $request->url_consult_sign;
+
+        $pdf_data = [$horas, $customer, $requests, $comments, $url_client_sign, $url_consult_sign ];
+
+        $request->session()->put('pdf_data', $pdf_data);
+
+
+        // Then, we register it to the db
+
         $originalArray = json_decode($request->id_request);
 
         Report::create([
@@ -199,8 +224,8 @@ class ConsultantController extends Controller
 
         }
 
-        return redirect('/regVisit')->with('success','Reporte Creado!');
 
+        return redirect()->route('regVisit', ['success' => 'Reporte Creado']);
     }
 
     public function modificar() {
