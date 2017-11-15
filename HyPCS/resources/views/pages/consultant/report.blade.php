@@ -84,8 +84,14 @@
                         <h3><span class="label label-default" id="firstAdd">Comentarios</span></h3>
                         <textarea class="form-control" rows="3" id="comentarios" readonly>{{$comments}}</textarea>
                     </div>
+
+
                     <canvas id="signature-pad1" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
                     <canvas id="signature-pad2" class="signature-pad" width=400 height=200 style="border:1px solid black"></canvas>
+
+
+
+
                     <div class="row">
                         <div class="col-md-1">
                             <form action="{{ route('signReport') }}" method="POST">

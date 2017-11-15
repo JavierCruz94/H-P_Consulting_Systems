@@ -51,6 +51,12 @@
 
     #algo{
     }
+    /*
+    #photo{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }*/
 
     #reporte{
         position: fixed;
@@ -78,59 +84,158 @@
         margin-top: 10px;
     }
 
+    #comments {
+        margin-top: 20px;
+    }
+
+    #firmas{
+        margin-top: 100px;
+        margin-bottom: 0px;
+    }
+
+    #firmas img{
+        width: 100px;
+        heiht: 100px;
+    }
+
+    #firma-cliente-img{
+        display: inline-block;
+        margin-left: 130px;
+    }
+
+    #firma-consult-img{
+        display: inline-block;
+        margin-left: 230px;
+    }
+
+    #firmas-lineas{
+        margin-top: -20px;
+        padding-top:0px;
+    }
+
+    #firma-cliente-linea{
+        display: inline-block;
+        margin-top: -20px;
+        margin-left: 60px;
+    }
+
+    #firma-consult-linea{
+        display: inline-block;
+        margin-top: -20px;
+        margin-left: 60px;
+    }
+
+    #firmas-texto{
+        margin-top: -20px;
+        padding-top: 0px;
+    }
+
+    #firma-cliente-texto{
+        display: inline-block;
+        margin-top: -20px;
+        margin-left: 130px;
+    }
+
+    #firma-consult-texto{
+        display:inline-block;
+        margin-top: -20px;
+        margin-left: 220px;
+
+    }
+
 </style>
 
-    <img class="img-responsive" id="photo" src="HYPCS.png" width="162" height="177" />
+    <div>
+        <img class="img-responsive" id="photo" src="HYPCS.png" width="162" height="177" />
 
-    <h2 id="reporte">Reporte de Visita</h2>
+        <h2 id="reporte">Reporte de Visita</h2>
 
-    <table class="table-bordered" id="date-table">
-        <tr>
-            <th>Fecha</th>
-            <td>{{$date}}</td>
-        </tr>
-        <tr>
-            <th>Hora de llegada</th>
-            <td>{{$horas[0]}}</td>
-        </tr>
-        <tr>
-            <th>Hora de salida</th>
-            <td>{{$horas[1]}}</td>
-        </tr>
-    </table>
-
-    <table class="table-bordered" id="customer-table">
-        <tr>
-            <th>Código de Cliente</th>
-            <td>{{$customer->code}}</td>
-        </tr>
-        <tr>
-            <th>Nombre de Cliente</th>
-            <td>{{$customer->name}}</td>
-        </tr>
-    </table>
-
-    <h2 id="requisiciones">Requisiciones</h2>
-
-    @foreach($requests as $request)
-        <table class="table-bordered req-table">
+        <table class="table-bordered" id="date-table">
             <tr>
-                <th>No. Req</th>
-                <td>{{$request[0]->id_request}}</td>
+                <th>Fecha</th>
+                <td>{{$date}}</td>
             </tr>
             <tr>
-                <th>Asunto</th>
-                <td>{{$request[0]->subject}}</td>
+                <th>Hora de llegada</th>
+                <td>{{$horas[0]}}</td>
             </tr>
             <tr>
-                <th>Descripción</th>
-                <td>{{$request[0]->description}}</td>
+                <th>Hora de salida</th>
+                <td>{{$horas[1]}}</td>
             </tr>
         </table>
+
+        <table class="table-bordered" id="customer-table">
+            <tr>
+                <th>Código de Cliente</th>
+                <td>{{$customer->code}}</td>
+            </tr>
+            <tr>
+                <th>Nombre de Cliente</th>
+                <td>{{$customer->name}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div>
+        <h2 id="requisiciones">Requisiciones</h2>
+    </div>
+
+    @foreach($requests as $request)
+        <div>
+            <table class="table-bordered req-table">
+                <tr>
+                    <th>No. Req</th>
+                    <td>{{$request[0]->id_request}}</td>
+                </tr>
+                <tr>
+                    <th>Asunto</th>
+                    <td>{{$request[0]->subject}}</td>
+                </tr>
+                <tr>
+                    <th>Descripción</th>
+                    <td>{{$request[0]->description}}</td>
+                </tr>
+            </table>
+        </div>
+
     @endforeach
 
-    <h2 id="comentarios">Comentarios</h2>
-    <p>{{$comments}}</p>
+
+
+    <div>
+        <h2>Comentarios</h2>
+        <p id="comments">{{$comments}}</p>
+    </div>
+
+
+    <div>
+        <div id="firmas">
+            <img src="sign.png" id="firma-cliente-img"/>
+            <img src="sign.png" id="firma-consult-img"/>
+        </div>
+
+        <div id="firmas-lineas">
+            <p id="firma-cliente-linea">
+                _________________________________
+            </p>
+            <p id="firma-consult-linea">
+                _________________________________
+            </p>
+        </div>
+        <div id="firmas-texto">
+            <p id="firma-cliente-texto">
+                Firma del Cliente
+            </p>
+            <p id="firma-consult-texto">
+                Firma del Consultor
+            </p>
+        </div>
+    </div>
+
+
+
 
 </body>
 </html>
