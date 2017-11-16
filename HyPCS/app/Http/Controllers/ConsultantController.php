@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Report;
+use Illuminate\Support\Facades\Storage;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PDFReport;
 
 class ConsultantController extends Controller
 {
@@ -176,9 +181,29 @@ class ConsultantController extends Controller
 
 
         // And erase the variable from session
-        $request->session()->forget('pdf_data');
+        //$request->session()->forget('pdf_data');
 
-        return $pdf->download('prueba.pdf');
+        $pdf->save('storage/reporte.pdf');
+
+        $consult = Auth::user();
+        $client = User::find($customer->id_customer);
+
+        Storage::delete('reporte.pdf');
+
+        //Mail::to('eli.emmanuel01@gmail.com')->send(new PDFReport());
+
+        Mail::send('emails.email', [], function ($message) {
+
+            $message->to('eli.emmanuel01@gmail.com')->subject('Visit Report');
+
+            $message->attach('storage/reporte.pdf');
+
+        });
+
+        return redirect('/regVisit');
+
+        // This return is used if we want to send the http response to download the pdf
+        //return $pdf->download();
 
     }
 
@@ -198,7 +223,7 @@ class ConsultantController extends Controller
 
 
         // Then, we register it to the db
-
+/*
         $originalArray = json_decode($request->id_request);
 
         Report::create([
@@ -224,7 +249,7 @@ class ConsultantController extends Controller
 
         }
 
-
+*/
         return redirect()->route('regVisit', ['success' => 'Reporte Creado']);
     }
 
