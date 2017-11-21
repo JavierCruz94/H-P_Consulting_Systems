@@ -145,7 +145,14 @@ class ConsultantController extends Controller
 
         $horas = array($request->arrivalHour, $request->departureHour);
 
-        $comments = $request->comentarios;
+        if(isset($request->comentarios))
+        {
+            $comments = $request->comentarios;
+        }
+        else
+        {
+            $comments = "";
+        }
         //var_dump($requests);
 
         $customer = DB::table('customers')->where('id_customer', $requests[0][0]->id_customer)->first();
@@ -194,7 +201,7 @@ class ConsultantController extends Controller
 
         Mail::send('emails.email', [], function ($message) {
 
-            $message->to('eli.emmanuel01@gmail.com')->subject('Visit Report');
+            $message->to('javicruz1994@gmail.com')->subject('Visit Report');
 
             $message->attach('storage/reporte.pdf');
 
@@ -223,7 +230,7 @@ class ConsultantController extends Controller
 
 
         // Then, we register it to the db
-/*
+
         $originalArray = json_decode($request->id_request);
 
         Report::create([
@@ -249,7 +256,7 @@ class ConsultantController extends Controller
 
         }
 
-*/
+
         return redirect()->route('regVisit', ['success' => 'Reporte Creado']);
     }
 
