@@ -195,6 +195,7 @@ class ConsultantController extends Controller
         $consult = Auth::user();
         $client = User::find($customer->id_customer);
 
+        //reporte_codigoCliente_fecha
         Storage::delete('reporte.pdf');
 
         //Mail::to('eli.emmanuel01@gmail.com')->send(new PDFReport());
@@ -206,6 +207,17 @@ class ConsultantController extends Controller
             $message->attach('storage/reporte.pdf');
 
         });
+
+        //Para otro destinatario
+        /*
+        Mail::send('emails.email', [], function ($message) {
+
+            $message->to('javicruz1994@gmail.com')->subject('Visit Report');
+
+            $message->attach('storage/reporte.pdf');
+
+        });
+        */
 
         return redirect('/regVisit');
 
