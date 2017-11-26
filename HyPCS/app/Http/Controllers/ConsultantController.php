@@ -151,7 +151,7 @@ class ConsultantController extends Controller
         }
         else
         {
-            $comments = "";
+            $comments = "--";
         }
         //var_dump($requests);
 
@@ -176,6 +176,7 @@ class ConsultantController extends Controller
         $url_client_sign = $data[4];
         $url_consult_sign = $data[5];
 
+
         $pdf = PDF::loadView('pages.consultant.pdf', [
             'horas' => $horas,
             'customer' => $customer,
@@ -190,26 +191,32 @@ class ConsultantController extends Controller
         // And erase the variable from session
         //$request->session()->forget('pdf_data');
 
-        $pdf->save('storage/reporte.pdf');
+        //Create the string to save the report
+        $reportName = 'storage/reporte_' . $customer->code . '_' . Carbon::now()->toFormattedDateString() . '.pdf';
+        $pdf->save($reportName);
 
         $consult = Auth::user();
         $client = User::find($customer->id_customer);
 
         //reporte_codigoCliente_fecha
-        Storage::delete('reporte.pdf');
+        Storage::delete($reportName);
 
         //Mail::to('eli.emmanuel01@gmail.com')->send(new PDFReport());
 
-        Mail::send('emails.email', [], function ($message) {
+        //Get customer email
+        //$custEmail = User::find($customer->email);
 
-            $message->to('javicruz1994@gmail.com')->subject('Visit Report');
-
-            $message->attach('storage/reporte.pdf');
-
+        //Send to consultant
+        Mail::send('emails.email', [], function ($message) use($customer, $client) {
+            $consult = Auth::user();
+            $reportName = 'storage/reporte_' . $customer->code . '_' . Carbon::now()->toFormattedDateString() . '.pdf';
+            $emails = [$consult->email, $client->email];
+            $message->to($emails)->subject('Visit Report');
+            $message->attach($reportName);
         });
 
-        //Para otro destinatario
         /*
+        //Send to customer
         Mail::send('emails.email', [], function ($message) {
 
             $message->to('javicruz1994@gmail.com')->subject('Visit Report');

@@ -37,9 +37,9 @@
                         <td>{{ $request->importance }}</td>
                         <td>{{$request->deadline}}</td>
                         <td>
-                            <select class="form-control" id="selectConsId" name="selectCons">
+                            <select class="form-control" id="selectConsId" name="selectCons" style="max-width: 180px">
                                 @foreach($consultants as $consultant)
-                                    <option value="{{$consultant->id_consultant}}">{{$consultant->firstname}} ({{$consultant->cantidad}})</option>
+                                    <option value="{{$consultant->id_consultant}}">{{$consultant->firstname}} {{$consultant->lastname}} ({{$consultant->cantidad}})</option>
                                 @endforeach
                             </select>
                         </td>

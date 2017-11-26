@@ -17,8 +17,43 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //Create users
+        //SEED TESTING FROM 0
+        /*
+        //User
+        User::create([
+            'username' => 'AdminJavi',
+            'password' => bcrypt('root'),
+            'email' =>'melissa.cbrc@hotmail.com',
+            'role' => 'admin'
+        ]);
+        //Admin
+        Admin::create([
+            'id_admin' => 1,
+            'firstname' => 'Javier',
+            'lastname' => 'Cruz Admin',
+            'registeredBy' => 1
+        ]);
+           */
 
+        //MAIN SEED
+        //User
+        User::create([
+            'username' => 'TFierro',
+            'password' => bcrypt('Admin@Hyp17!'),
+            'email' =>'hectorcg@hypcs.com',
+            'role' => 'admin'
+        ]);
+        //Admin
+        Admin::create([
+            'id_admin' => 1,
+            'firstname' => 'Hector',
+            'lastname' => 'Cruz Admin',
+            'registeredBy' => 1
+        ]);
+
+        //FOR TESTIN PURPOSES
+        /*
+        //Create users
         User::create([
             'username' => 'admin1',
             'password' => bcrypt('root'),
@@ -196,5 +231,6 @@ class DatabaseSeeder extends Seeder
             'time_scheduled' => date("101112"),
             'id_report' => null
         ]);
+    */
     }
 }

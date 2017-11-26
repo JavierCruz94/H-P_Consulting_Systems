@@ -45,24 +45,47 @@ class AdminController extends Controller
 
     public function addCustomer(Request $request)
     {
-        User::create([
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-            'role' => 'customer'
-        ]);
+        //Check if user or email is already taken
+        $takenUser = DB::table('users')
+            ->where('username', $request->username)
+            ->orwhere('email', $request->email)
+            ->get();
 
-        //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id');
+        //Check different client code and name in customers
+        $takenCust = DB::table('customers')
+            ->where('code', $request->code)
+            ->orwhere('name', $request->nombre)
+            ->get();
 
-        Customer::create([
-            'id_customer' => $userID,
-            'code' => $request->code,
-            'name'=> $request->nombre,
-            'registeredBy' => 1
-        ]);
+        //If there is some duplicated user with some data
+        if (sizeof($takenUser)>0 || sizeof($takenCust)>0)
+        {
+            //echo json_encode(sizeof($takenUser));
+            return redirect('/adminAddCustomer')->with('fail','ERROR: Verificar datos, existen duplicados');
+        }
+        else
+        {
+            //Create user
+            User::create([
+                'username' => $request->username,
+                'password' => bcrypt($request->password),
+                'email' => $request->email,
+                'role' => 'customer'
+            ]);
 
-        return redirect('/adminAddCustomer')->with('success','Cliente agregado!');
+            //Find new user ID
+            $userID = DB::table('users')->where('username', $request->username)->value('id');
+
+            //Create the customer with the ID previously found
+            Customer::create([
+                'id_customer' => $userID,
+                'code' => $request->code,
+                'name' => $request->nombre,
+                'registeredBy' => 1
+            ]);
+
+            return redirect('/adminAddCustomer')->with('success', 'Cliente agregado!');
+        }
     }
 
     public function addConsultantForm() {
@@ -71,25 +94,42 @@ class AdminController extends Controller
 
     public function addConsultant(Request $request) {
 
-        User::create([
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-            'role' => 'consultant'
-        ]);
+        //Check if user or email is already taken
+        $takenUser = DB::table('users')
+            ->where('username', $request->username)
+            ->orwhere('email', $request->email)
+            ->get();
+        //Check if consultant is already added
+        $takenCons = DB::table('consultants')
+            ->where([['firstname', $request->firstname],
+                    ['lastname', $request->lastname]])
+            ->get();
+        if (sizeof($takenUser)>0 || sizeof($takenCons)>0)
+        {
+            return redirect('/adminAddConsultant')->with('fail','ERROR: Verificar datos, existen duplicados');
+        }
+        else{
+            User::create([
+                'username' => $request->username,
+                'password' => bcrypt($request->password),
+                'email' => $request->email,
+                'role' => 'consultant'
+            ]);
 
-        //encontrar su ID
-        $userID = DB::table('users')->where('username', $request->username)->value('id');
+            //encontrar su ID
+            $userID = DB::table('users')->where('username', $request->username)->value('id');
 
-        Consultant::create([
-            'id_consultant' => $userID,
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'level' => $request->nivel,
-            'registeredBy' => 1
-        ]);
+            Consultant::create([
+                'id_consultant' => $userID,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'level' => $request->nivel,
+                'registeredBy' => 1
+            ]);
 
-        return redirect('/adminAddConsultant')->with('success','Consultor agregado!');
+            return redirect('/adminAddConsultant')->with('success','Consultor agregado!');
+        }
+
     }
 
     public function getRequestsConsultants() {
@@ -98,7 +138,7 @@ class AdminController extends Controller
             ->where('id_consultant', '=', null)
             ->get();
         $consultants = DB::table('consultants')
-            ->select('consultants.id_consultant', 'consultants.firstname', DB::raw('SUM(if(requests.solved=0,1,0)) as cantidad'))
+            ->select('consultants.id_consultant', 'consultants.firstname', 'consultants.lastname', DB::raw('SUM(if(requests.solved=0,1,0)) as cantidad'))
             ->leftjoin('requests', 'consultants.id_consultant', '=', 'requests.id_consultant')
             ->groupby('consultants.id_consultant')
             ->get();
